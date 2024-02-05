@@ -1,16 +1,198 @@
 {
     "season 2": {
-        "6O-zX_CK1vqcdk4aAAAD": {
-            "name": "SYSTEM",
-            "team": "Cowboys",
-            "pick": "1",
-            "draft": []
-        },
-        "w3nVZWM06sbzaUjFAAAF": {
+        "HqVhSDsqPdja094rAAAD": {
             "name": "Dallas",
-            "team": "Steelers",
+            "team": "Giants",
             "pick": "2",
-            "draft": []
+            "draft": [
+                [
+                    "Giants",
+                    "Jalen Ramsey",
+                    "CB"
+                ],
+                [
+                    "Giants",
+                    "Tyreek Hill",
+                    "WR"
+                ],
+                [
+                    "Giants",
+                    "Nick Chubb",
+                    "HB"
+                ],
+                [
+                    "Giants",
+                    "Cooper Kupp",
+                    "WR"
+                ],
+                [
+                    "Giants",
+                    "Christian McCaffrey",
+                    "HB"
+                ],
+                [
+                    "Giants",
+                    "Travis Kelce",
+                    "TE"
+                ],
+                [
+                    "Giants",
+                    "DeAndre Hopkins",
+                    "WR"
+                ],
+                [
+                    "Giants",
+                    "Stefon Diggs",
+                    "WR"
+                ],
+                [
+                    "Giants",
+                    "Dalvin Cook",
+                    "HB"
+                ],
+                [
+                    "Giants",
+                    "Tyron Smith",
+                    "LT"
+                ],
+                [
+                    "Giants",
+                    "Jonathan Taylor",
+                    "HB"
+                ],
+                [
+                    "Giants",
+                    "Cameron Heyward",
+                    "RE"
+                ],
+                [
+                    "Giants",
+                    "Quenton Nelson",
+                    "LG"
+                ],
+                [
+                    "Giants",
+                    "Tyrann Mathieu",
+                    "SS"
+                ],
+                [
+                    "Giants",
+                    "Darius Slay Jr",
+                    "CB"
+                ],
+                [
+                    "Giants",
+                    "Von Miller",
+                    "RE"
+                ],
+                [
+                    "Giants",
+                    "Joey Bosa",
+                    "LOLB"
+                ],
+                [
+                    "Giants",
+                    "Darren Waller",
+                    "TE"
+                ]
+            ]
+        },
+        "F4R1x9K8AL_W4dJvAAAF": {
+            "name": "Dino",
+            "team": "Lions",
+            "pick": "1",
+            "draft": [
+                [
+                    "Lions",
+                    "Myles Garrett",
+                    "RE"
+                ],
+                [
+                    "Lions",
+                    "Davante Adams",
+                    "WR"
+                ],
+                [
+                    "Lions",
+                    "Derrick Henry",
+                    "HB"
+                ],
+                [
+                    "Lions",
+                    "Trent Williams",
+                    "LT"
+                ],
+                [
+                    "Lions",
+                    "T.J. Watt",
+                    "LOLB"
+                ],
+                [
+                    "Lions",
+                    "Patrick Mahomes",
+                    "QB"
+                ],
+                [
+                    "Lions",
+                    "George Kittle",
+                    "TE"
+                ],
+                [
+                    "Lions",
+                    "Zack Martin",
+                    "RG"
+                ],
+                [
+                    "Lions",
+                    "Fred Warner",
+                    "MLB"
+                ],
+                [
+                    "Lions",
+                    "Jaire Alexander",
+                    "CB"
+                ],
+                [
+                    "Lions",
+                    "Derwin James Jr",
+                    "SS"
+                ],
+                [
+                    "Lions",
+                    "Nick Bosa",
+                    "RE"
+                ],
+                [
+                    "Lions",
+                    "Justin Jefferson",
+                    "WR"
+                ],
+                [
+                    "Lions",
+                    "Tre'Davious White",
+                    "CB"
+                ],
+                [
+                    "Lions",
+                    "Vita Vea",
+                    "DT"
+                ],
+                [
+                    "Lions",
+                    "Kevin Byard",
+                    "FS"
+                ],
+                [
+                    "Lions",
+                    "Lane Johnson",
+                    "RT"
+                ],
+                [
+                    "Lions",
+                    "Khalil Mack",
+                    "ROLB"
+                ]
+            ]
         }
     }
 }

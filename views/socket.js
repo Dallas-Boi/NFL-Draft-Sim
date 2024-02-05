@@ -10,8 +10,7 @@ var isReady = false
 // When the client clicks the ready button
 $("#ready_btn").bind("click", function() {
     if (!(isReady)) { // If player is un-ready become ready
-        isReady = true
-        $("#ready_btn").text("Un-Ready?")
+        
         // client Data
         try {
             var data = {
@@ -20,7 +19,8 @@ $("#ready_btn").bind("click", function() {
                 team: $(".Selected_t")[0].value
             }
         } catch (e) {alert("Sorry, But Something went Wrong or Something was not entered");return}
-        
+        isReady = true
+        $("#ready_btn").text("Un-Ready?")
         // Checks if the data has all info
         if (Object.keys(data).length !== 3) {alert("Sorry But Something is not entered for you to continue");return}
         // Emits the data
