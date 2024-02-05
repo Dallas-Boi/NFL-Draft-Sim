@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>NFL Draft</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.7.4/dist/socket.io.min.js"></script>
+    </head>
+    <body>
+        <div id="endScreen">
+            <div id="endTitle">That's It</div>
+            <div id="endSub">Any Idea's Lmk what I could add.<br><br>All Picks are Logged with the player Name, Team, and Position.</div>
+        </div>
+        <div id="main" class="page">
+            <div id="team_container" class="top_con">
+                <div class="navbar">
+                    <button id="draft" class="selected">Draft Results</button>
+                    <button id="their">My Picks</button>
+                </div>
+                <div id="picks_t" class="infoBox">
+                </div>
+                <div id="picks_p" class="infoBox" hidden>
+                    
+                </div>
+            </div>
+            <div id="clientData" class="top_con">
+                <div id="curDraft">
+                    Currently Drafting:<br>
+                    <div id="cur_name"></div>
+                </div>
+                <div id="curRound">
+                    Current Draft Round:<br>
+                    <div id="cur_r"></div>
+                </div>
+            </div>
+            <div id="player_container" class="top_con">
+                <div class="navbar">
+                    <button id="all_btn" class="selected">All</button>
+                    <button id="off_btn">Offense</button>
+                    <button id="def_btn">Defense</button>
+                    <button id="spe_btn">Special</button>
+                </div>
+                <div id="subNav">
+                    <input id="searchPlayer" placeholder="Player's Name">
+                </div>
+                <div id="draft_players" class="infoBox">
+                    
+                </div>
+            </div>
+        </div>
+        <div id="teamPicks" class="page">
+            <div id="AFC" class="nflTeams">
+                <div class="section">
+                    AFC East<br>
+                    <div id="afc_east" class="images"></div>
+                </div>
+                <div class="section">
+                    AFC North<br>
+                    <div id="afc_north" class="images"></div>
+                </div>
+                <div class="section">
+                    AFC South<br>
+                    <div id="afc_south" class="images"></div>
+                </div>
+                <div class="section">
+                    AFC West<br>
+                    <div id="afc_west" class="images"></div>
+                </div>
+            </div>
+            <div id="gameSettings" class="nflTeams">
+                <div class="txt">
+                    <label for="name_inp">Enter Your Name</label>
+                    <input name="name" id="name_inp">
+                </div>
+                <div class="setting">
+                    <div class="txt">What pick Did you Get?</div>
+                    <input type="radio" id="rad_1" name="draft#" value="1">
+                    <label for="rad_1">Pick 1</label>
+                    <input type="radio" id="rad_2" name="draft#" value="2">
+                    <label for="rad_2">Pick 2</label>
+                    <input type="radio" id="rad_3" name="draft#" value="3">
+                    <label for="rad_3">Pick 3</label>
+                </div>
+                <button id="ready_btn">Ready?</button>
+            </div>
+            <div id="NFC" class="nflTeams">
+                <div class="section">
+                    NFC East<br>
+                    <div id="nfc_east" class="images"></div>
+                </div>
+                <div class="section">
+                    NFC North<br>
+                    <div id="nfc_north" class="images"></div>
+                </div>
+                <div class="section">
+                    NFC South<br>
+                    <div id="nfc_south" class="images"></div>
+                </div>
+                <div class="section">
+                    NFC West<br>
+                    <div id="nfc_west" class="images"></div>
+                </div>
+            </div>
+        </div>
+        <script src="inter.js"></script>
+        <script src="socket.js"></script>
+    </body>
+</html>

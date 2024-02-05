@@ -1,0 +1,223 @@
+/* Made Wednesday 1-31-24 */
+
+body {background-color: grey;}
+
+.page {
+    width:100%;
+    height:100%;
+    max-width: 100%;
+    max-height: 100%;
+    justify-content: center;
+    align-content: center;
+    display: inline-flex;
+    gap:5em;
+}
+
+.top_con {
+    position: relative;
+    width:30em;
+    height:100%;
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid black;
+    justify-content: center;
+    align-content: center;
+    background-color: white;
+}
+
+.navbar {
+    position: relative;
+    display:flex;
+	overflow: auto;
+}
+
+.navbar button {
+    width:10em;
+    max-width: inherit;
+    height:5em;
+    background-color: blue;
+    color:white;
+}
+
+.navbar .selected {
+    background: rgb(173, 173, 249);
+    outline: none;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+       -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+            box-shadow: inset 0px 0px 5px #c1c1c1;
+}
+
+#subNav {
+    display:flex;
+	overflow: auto;
+}
+
+#searchPlayer {width:100%;}
+
+.pos_btn {
+    width:100%;
+    background-color: black;
+    color:white;
+}
+
+/* This fixes the issue where the team container navbar buttons does not fix the container */
+#team_container > .navbar > button {width:20em;}
+
+.infoBox {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 86.75%;
+}
+
+/* PlayerBox elements */
+.draftBox {
+    position: relative;
+    display:flex;
+    border:1px solid black;
+    width:100%;
+    height:70px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    font-size: 25px;
+    gap:2em;
+}
+
+.draftBox > * {
+    margin: auto 0;
+    font-size: 20px;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.draftBox .player_name {
+    font-weight: bold;
+    margin-right:3em;
+    width:5.5em;
+}
+
+.draftBox .subName {
+    display: contents;
+    color:rgb(117, 117, 117);
+    font-size: 15px;
+}
+
+.draftBox .player_ovr {margin-right:5em}
+
+.draftBox .draft_btn {
+    color: white;
+    background-color: black;
+    height:40px;
+    width:40px;
+    border-radius: 50%;
+    font-size: 40px;
+}
+
+.draftBox .draft_btn:disabled {
+    color: white;
+    background-color: rgb(140, 140, 140);
+    height:40px;
+    width:40px;
+    border-radius: 50%;
+    font-size: 40px;
+}
+
+/* TeamBox Elements */
+.teamBox .draft_num {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 1em;
+}
+
+.teamIcon {
+    align-self: flex-start;
+    width:4em;
+    height:inherit;
+    float:inline-start;
+}
+
+.teamBox .subName {
+    margin-right:2em;
+    width:5em;
+}
+
+/* All the Client Data Element items */
+#clientData {
+    position: relative;
+    background-color: black;
+    text-align: center;
+    width:15em;
+}
+
+#clientData > * {
+    color:white;
+    font-size: 25px;
+}
+
+#curDraft {margin-top: 5em;}
+#curRound {margin-top:2em;}
+
+/* The Team Picks Elements */
+.nflTeams {
+    width: 30em;
+    border: 1px solid black;
+    text-align: center;
+    justify-content: center;
+}
+
+.section {
+    margin-top: 2.5em;
+    font-size: 20px;
+}
+
+.images {
+    display:flex;
+    justify-content: center;
+}
+
+.images .teamIcon {opacity: 25%;}
+
+.images .Selected_t {opacity: 100%;}
+
+#gameSettings {width: 15em;}
+#gameSettings > * {margin-top: 5em}
+
+.txt {
+    font-size: 20px;;
+    font-weight: bold;
+    width: 15em;
+    max-width: 100%;
+}
+
+#name_inp {
+    border-radius: 10em;
+    text-align: center;
+}
+
+#ready_btn {
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10em;
+    width: 15em;
+    max-width: 100%;
+}
+
+/* The End Screen Elements */
+#endScreen {
+    width:20em;
+    height: 10em;
+    border: 1px solid black;
+    position: absolute;
+    text-align: center;
+    background-color: grey;
+    left:36.5%;
+}
+
+#endTitle {
+    font-weight: bold;
+    font-size: 25px;
+}
+#endSub {
+    margin-top: 1em;
+}
