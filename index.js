@@ -11,7 +11,8 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-const id="season 2" // ID for the season
+const id = "season 2" // ID for the season
+var nonDraft_Players = [] // Players in this list will not appear on the draft list 
 
 // Server Headers
 app.set('view engine', 'ejs');
@@ -39,13 +40,6 @@ app.get('/draft', (req, res) => {
 var con = {}
 var ready = 0
 
-var nonDraft_Players = [
-    "Tom Brady",
-    "Josh Allen", 
-    "Aaron Rodgers",
-    "Myles Garrett"
-]
-
 // Socket IO handlers
 io.on("connection", (socket) => {
     console.log('a user connected');
@@ -53,7 +47,7 @@ io.on("connection", (socket) => {
 
     // When the client Disconnects from the server
     socket.on('disconnect', () => {
-        console.log(socket.id)
+        if (ready !== 0) {ready--} // Removes that player being ready 
         console.log('user disconnected');
         delete con[socket.id]
     });
@@ -103,8 +97,7 @@ io.on("connection", (socket) => {
     // When a client is unready
     socket.on("clicked_un_ready", (p) => {
         con[socket.id] = {ready: false}
-        ready--
-        console.log(ready)
+        if (ready !== 0) {ready--} // Removes that player being ready 
     })
 
     // When the client changes the turn
