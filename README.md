@@ -1,5 +1,5 @@
 <h3>About</h3>
-<p>I made this <b style="color:red">N</b><b style="color:blue">F</b>L Draft Simulator to help me and my friends play our own fantasy draft in madded 23 with madded 23 players. Not all players in Madded 23 are in the players.json because this JSON file had all players on release and then I removed all players below 70 OVR</p>
+<p>I made this <b style="color:red">N</b><b style="color:blue">F</b>L Draft Simulator to help me and my friends play our own fantasy draft in madded 23 with madded 23 players. Not all players in Madded 23 are in the players.json because this JSON file had all players on release and then I removed all players below 70 OVR.</p>
 
 <h3>NFL Draft Simulator (2022 Season)</h3>
 <p>To start the draft. Have everyone connected to the <a href="#Instructions">nodeJS</a> server.</p>
