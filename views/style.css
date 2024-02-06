@@ -221,3 +221,19 @@ body {background-color: grey;}
 #endSub {
     margin-top: 1em;
 }
+
+/* Result Menu */
+.result .navbar {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    gap:2em;
+}
+
+.result .navbar > * {
+    width: 5em;
+    display: inline-flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}

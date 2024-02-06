@@ -36,11 +36,13 @@ function placePlayers() {
         var num = allPlayers[i][amo-4]
         var ovr = allPlayers[i][amo-1]
         var pos = allPlayers[i][amo-2]
+        var tm = allPlayers[i][amo-3]
         // Checks if the player has JR/II
         if (amo >= 7) {abrivi = ` ${allPlayers[i][amo-5]}`}
         // Player Container
         con.id = `${allPlayers[i][0]} ${allPlayers[i][1]}${abrivi}`
         con.className = `draftBox ${pos}`
+        con.value = tm
         // Player Name
         var pname = document.createElement("div")
         pname.className = "player_name"
@@ -62,8 +64,9 @@ function placePlayers() {
         // When the player clicks the draft button
         d_btn.addEventListener("click", function() {
             var n = this.parentElement.id // The player name
+            var t = this.parentElement.value
             var p = (this.parentElement.className).replace("draftBox ", "")
-            socket.emit("pickDraft", [draftTeams[turn], n, p])
+            socket.emit("pickDraft", [draftTeams[turn], n, p, t])
         })
         // Appends everything
         con.appendChild(pname)
@@ -308,4 +311,5 @@ function loadTeams() {
         }
     } catch (e) {}
 }
-loadTeams()
+// So I can call this file with out it loading teams
+if (window.location.pathname == "/") {loadTeams()}

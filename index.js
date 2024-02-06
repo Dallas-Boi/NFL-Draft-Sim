@@ -11,6 +11,8 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
+const id="season 2" // ID for the season
+
 // Server Headers
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
@@ -22,7 +24,17 @@ app.get('/', (req, res) => {
     res.render("main")
 });
 
-const id="season 2" // ID for the season
+// Show the drafts data
+app.get('/results', (req, res) => {
+    res.render("results/end")
+})
+
+// This will return the drafts.json data
+app.get('/draft', (req, res) => {
+    var d = require("./drafts.json")
+    res.send(d[id])
+})
+
 // All variables for the Socket IO connects
 var con = {}
 var ready = 0
@@ -102,7 +114,11 @@ io.on("connection", (socket) => {
 
     // This send all clients the pickDraft call
     socket.on("pickDraft", (data) => {
-        console.log(data)
+        io.emit("pick draft", data)
+        // Replaces the Clients team to the players team
+        data[0] = data[3]
+        data.pop()
+        // Writes everything to the .json File
         var d = require("./drafts.json") // gets JSON file
         d[id][socket.id]["draft"].push(data)
         fs.writeFile("drafts.json", JSON.stringify(d, null, 4),err => {
@@ -112,7 +128,7 @@ io.on("connection", (socket) => {
             // Success 
             console.log("Done writing");
         });
-        io.emit("pick draft", data)
+        
     })
 })
 

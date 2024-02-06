@@ -45,7 +45,7 @@ socket.on("start_draft", (data_p) => {
     // data_p | 0 = Team Order | 1 = non draftable players
     $("#teamPicks").hide()
     $("#main").show()
-    for (var i = 0; i < data_p.length; i++) {
+    for (var i = 0; i < data_p[0].length; i++) {
         placeClients(data_p[0][i]["team"], data_p[0][i]["pick"], data_p[0][i]["id"])
     }
     changeTurn(uid)
