@@ -66,3 +66,14 @@ socket.on("pick draft", (data) => {
     // 0 = Team | 1 = player
     pickDraft(data[0], data[1])
 })
+
+// Error Handler
+socket.on("connect_error", (err) => {
+    // the reason of the error, for example "xhr poll error"
+    console.log(err.message);
+    if (err.message == "xhr poll error") {
+        alert("Failed to Connect to server. Either the Server is offline of client can not see the hosted server. Please contact the Server Admin.")
+        isReady = false
+        $("#ready_btn").text("Ready?")
+    }
+});

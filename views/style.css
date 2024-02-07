@@ -223,6 +223,24 @@ body {background-color: grey;}
 }
 
 /* Result Menu */
+#head {
+    width:98%;
+    height:10%;
+    background-color: black;
+    display:flex;
+    flex-wrap: nowrap;
+    gap:5em;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+#head label {
+    color: white;
+    font-size: 20px;
+}
+
+.result {height:89%;}
 .result .navbar {
     background-color: blue;
     color: white;

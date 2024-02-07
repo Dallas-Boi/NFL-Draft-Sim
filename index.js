@@ -32,8 +32,8 @@ app.get('/results', (req, res) => {
 
 // This will return the drafts.json data
 app.get('/draft', (req, res) => {
-    var d = require("./drafts.json")
-    res.send(d[id])
+    var d = require("./ignore/drafts.json")
+    res.send(d)
 })
 
 // All variables for the Socket IO connects

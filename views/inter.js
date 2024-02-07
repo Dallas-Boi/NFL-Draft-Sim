@@ -16,7 +16,9 @@ function changeTurn() {
     if (turn >= draftTeams.length) {
         turn = 0
         current_round++
-        if (current_round == draft_rounds+1) {$("#endScreen").show();$("#main").hide();return} // This will end the draft
+        if (current_round == draft_rounds+1) {
+            $("#endScreen").show();$("#main").hide();
+            return} // This will end the draft
     } 
     // Disables all draft btns 
     $(".draft_btn").attr("disabled", true) 
@@ -24,7 +26,7 @@ function changeTurn() {
 
     // After changing the turn it will update the clientData elements
     document.getElementById("cur_name").textContent = draftTeams[turn]
-    document.getElementById("cur_r").textContent = current_round
+    document.getElementById("cur_r").textContent = `${current_round}/${draft_rounds}`
 }
 
 // Creates all the players
