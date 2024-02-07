@@ -32,7 +32,7 @@ app.get('/results', (req, res) => {
 
 // This will return the drafts.json data
 app.get('/draft', (req, res) => {
-    var d = require("./ignore/drafts.json")
+    var d = require("./drafts.json")
     res.send(d)
 })
 
