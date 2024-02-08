@@ -6,9 +6,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
-        <style>
-            
-        </style>
+        <%- include( '../../partials/message' )%>
         <div id="main" class="page" style="flex-wrap: wrap;gap:1em;">
             <div id="head">
                 <div id="pick_draft_season" class="head_sub">
@@ -16,13 +14,13 @@
                     <select id="draft_cat" name="draft_pick">
                     </select>
                 </div>
+                
                 <div id="pick_sorted" class="head_sub">
                     <div style="color:white;font-size: 20px;font-weight: bold;">Sorted?</div>
-                    <label for="unsort">Un-Sorted</label>
-                    <input type="radio" id="unsort" name="sorted" value="false" checked>
-                    <br>
-                    <label for="sort">Sorted</label>
-                    <input type="radio" id="sort" name="sorted" value="true">
+                    <select id="sort" style="text-align: center;">
+                        <option value="sort">Sort</option>
+                        <option value="unsort">Un-Sorted</option>
+                    </select>
                 </div>
             </div>
         </div>

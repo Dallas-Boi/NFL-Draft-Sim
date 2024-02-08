@@ -1,0 +1,14 @@
+{
+    "id": "Season 3",
+    "not_draftable": [
+        "Patrick Mahomes",
+        "Tyreek Hill",
+        "Jaire Alexander",
+        "Travis Kelce",
+        "Fred Warner"
+    ],
+    "pick_old": {
+        "active?": true,
+        "amount": 5
+    }
+}

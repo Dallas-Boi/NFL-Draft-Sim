@@ -97,5 +97,25 @@
                 ]
             ]
         }
+    },
+    "season 3": {
+        "o3b-YkWQehYeyTtfAAAC": {
+            "name": "Dallas",
+            "team": "Patriots",
+            "pick": "1",
+            "draft": [
+                [
+                    "Raiders",
+                    "Davante Adams",
+                    "WR"
+                ]
+            ]
+        },
+        "ghWSDmieoGlwG72-AAAD": {
+            "name": "Dallas",
+            "team": "Giants",
+            "pick": "2",
+            "draft": []
+        }
     }
 }

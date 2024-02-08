@@ -255,3 +255,22 @@ body {background-color: grey;}
     flex-wrap: wrap;
     justify-content: center;
 }
+
+#notify {
+    width:99%;
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#msg {
+    width:20em;
+    display: inline-grid;
+    height: 5em;
+    border: 1px solid white;
+    color:white;
+    background-color: black;
+    z-index: 20;
+    align-content: center;
+}

@@ -1,0 +1,26 @@
+<!-- Adds a message box -->
+<div id="notify" style="display: none;">
+    <div id="msg">
+        <div id="msg_title">
+            
+        </div><br>
+        <div id="msg_txt">
+        </div>
+    </div>
+    <script type="text/javascript">
+        function notify_client(type, msg) {
+            var color
+            // Sets the color
+            if (type == "Server Error") {color = "darkred"}
+            else if (type == "Error") {color = "red"}
+            else if (type == "Successful") {color = "lime"}
+            // Shows the element and text
+            $("#notify").fadeIn(1000)
+            $(`#msg_title`).html(`<b style="color:${color}">${type}</b>`)
+            $("#msg_txt").text(msg)
+            setTimeout(function() {
+                $("#notify").fadeOut(1000)
+            }, 2000)
+        }
+    </script>
+</div>

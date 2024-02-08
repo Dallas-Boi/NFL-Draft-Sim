@@ -283,8 +283,15 @@ function loadTeams() {
         img.className = "teamIcon"
         img.tabIndex = "0"
         img.addEventListener("click", function() {
+            // Checks if the team is disabled
+            console.log(this.className.includes("disabled_team"))
+            if (this.className.includes("disabled_team")) {
+                notify_client("Error", "This Team Was Already Selected")
+                return
+            }
             $(".Selected_t").attr('class', 'teamIcon');
             this.className = "teamIcon Selected_t"
+            socket.emit("picked_team", this.value)
         })
         return img
     }
@@ -293,6 +300,7 @@ function loadTeams() {
         for (var i=0; i < n_teams.length; i++) { // All players
             for (var j=0; j < 4; j++) { // Every section
                 let img = repeat()
+                img.id = n_teams[(i*4)+j]
                 img.src = `./teams/${n_teams[(i*4)+j]}.png`
                 img.value = n_teams[(i*4)+j]
                 
@@ -306,6 +314,7 @@ function loadTeams() {
         for (var i=0; i < a_teams.length; i++) { // All players
             for (var j=0; j < 4; j++) { // Every section
                 let img = repeat()
+                img.id = a_teams[(i*4)+j]
                 img.src = `./teams/${a_teams[(i*4)+j]}.png`
                 img.value = a_teams[(i*4)+j]
                 document.getElementById(`afc_${sect[i]}`).appendChild(img)

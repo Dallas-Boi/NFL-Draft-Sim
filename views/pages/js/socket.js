@@ -18,11 +18,11 @@ $("#ready_btn").bind("click", function() {
                 pick: $('input[name="draft#"]:checked').val(),
                 team: $(".Selected_t")[0].value
             }
-        } catch (e) {alert("Sorry, But Something went Wrong or Something was not entered");return}
+        } catch (e) {notify_client("Error", "You did not Select your Team");return}
         isReady = true
         $("#ready_btn").text("Un-Ready?")
         // Checks if the data has all info
-        if (Object.keys(data).length !== 3) {alert("Sorry But Something is not entered for you to continue");return}
+        if (Object.keys(data).length !== 3) {notify_client("Error","Sorry But Something was not Entered");return}
         // Emits the data
         socket.emit("clicked_ready", JSON.stringify(data))
     } else if (isReady) {
@@ -32,9 +32,19 @@ $("#ready_btn").bind("click", function() {
     }
 })
 
+// When the user changes their name
+$("#name_inp").change(function() {
+    socket.emit("change_id", this.value)
+})
+
 // If an input error occured
 socket.on("input_e", (msg) => {
-    alert(msg)
+    if (msg.length == 2) {
+        $("#name_inp").val("")
+        notify_client("Error", msg[0])
+        return
+    }
+    notify_client("Error",msg)
 })
 
 // When Called this will give the client their ID
@@ -72,8 +82,21 @@ socket.on("connect_error", (err) => {
     // the reason of the error, for example "xhr poll error"
     console.log(err.message);
     if (err.message == "xhr poll error") {
-        alert("Failed to Connect to server. Either the Server is offline of client can not see the hosted server. Please contact the Server Admin.")
+        notify_client("Server Error","Failed to Connect to server. Either the Server is offline of client can not see the hosted server. Please contact the Server Admin.")
         isReady = false
         $("#ready_btn").text("Ready?")
     }
 });
+
+// When a team needs to be disabled
+socket.on("disable_team", (data) => {
+    var this_id = ""
+    // Checks to see if the current use selected any team yet
+    try {this_id = $('.Selected_t')[0].id} catch {} // Error Handler
+    // Resets the disabled teams
+    $("img[class='teamIcon disabled_team']").attr("class", "teamIcon")
+    // Disables the given Teams
+    data[0].forEach((item, index) => {
+        if (this_id !== item) {$(`#${item}`).attr("class","teamIcon disabled_team")}
+    });
+})

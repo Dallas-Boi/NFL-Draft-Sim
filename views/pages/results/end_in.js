@@ -107,7 +107,7 @@ function placePick(tm, play, pos) {
 }
 
 // When the user clicks the sorted / unsorted radio
-$('input[type=radio][name="sorted"]').change(function() {
+$('#sort').change(function() {
     for (var i=0; i < players.length; i++) {
         if (this.value == "false") {unsortPicks(players[i])}
         else if (this.value == "true") {sortPicks(players[i])}
