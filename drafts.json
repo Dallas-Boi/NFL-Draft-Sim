@@ -1,121 +1,107 @@
 {
     "season 2": {
-        "t0JLDdOp-u0p6xnAAAAD": {
+        "Chris": {
+            "name": "Chris",
+            "team": "Chiefs",
+            "pick": "1",
+            "draft": [
+                ["Patrick Mahomes",	"Chiefs","QB"],
+                ["Davante Adams","Raiders","WR"],
+                ["Tyreek Hill", "Dolphins","WR"],
+                ["Stefon Diggs","Bills","WR"],
+                ["Jaire Alexander","Packers","CB"],
+                ["Travis Kelce","Chiefs","TE"],
+                ["Fred Warner","49ers","MLB"],
+                ["Micah Hyde","Bills","FS"],
+                ["Micah Parsons","Cowboys","ROLB"],
+                ["Jonathan Allen","Commanders","DT"],
+                ["DeMarcus Lawrence","Cowboys","LE"],
+                ["Darius Slay Jr","Eagles","CB"],
+                ["Chris Jones","Chiefs","DT"],
+                ["Derrick Henry","Titans","HB"],
+                ["Saquon Barkley","Giants","HB"],
+                ["Keenan Allen","Chargers","WR"],
+                ["Corey Linsley","Chargers","C"]
+            ]
+        },
+        "Zion": {
+            "name": "Zion",
+            "team": "49ers",
+            "pick": "2",
+            "draft": [
+                ["Tom Brady","Buccaneers","QB"],
+                ["Christian McCaffrey","Panthers","HB"],
+                ["Cooper Kupp","Rams","WR"],
+                ["Aaron Donald","Rams","RE"],
+                ["DeAndre Hopkins","Cardinals","WR"],
+                ["Marlon Humphrey","Ravens","CB"],
+                ["Justin Jefferson","Vikings","WR"],
+                ["Joey Bosa","Chargers","LOLB"],
+                ["Vita Vea","Buccaneers","DT"],
+                ["Derwin James Jr","Chargers","SS"],
+                ["Josh Allen","Bills","QB"],
+                ["Nick Bosa","49ers","RE"],
+                ["George Kittle","49ers","TE"],
+                ["Tyrann Mathieu","Saints","SS"],
+                ["Alvin Kamara","Saints","HB"],
+                ["Stephon Gilmore","Colts","CB"],
+                ["Justin Tucker","Ravens","K"]
+            ]
+        },
+        "Dallas": {
+            "name": "Dallas",
+            "team": "Browns",
+            "pick": "3",
+            "draft": [
+                ["Myles Garrett","Browns","RE"],
+                ["Aaron Rodgers","Packers","QB"],
+                ["Jalen Ramsey","Rams","CB"],
+                ["Mike Evans","Buccaneers","WR"],
+                ["Von Miller","Bills","RE"],
+                ["Chris Jones","Chiefs","DT"],
+                ["Nick Chubb","Browns","HB"],
+                ["Lavonte David","Buccaneers","MLB"],
+                ["T.J Watt","Steelers","LOLB"],
+                ["Khalil Mack","Chargers","ROLB"],
+                ["Jessie Bates III","Bengals","FS"],
+                ["Jaylen Waddle","Dolphins","WR"],
+                ["Jameson Williams","Lions","WR"],
+                ["Patrick Ricard","Ravens","FB"],
+                ["David Njoku","Browns","TE"],
+                ["Budda Baker","Cardinals","SS"],
+                ["Cameron Jordan","Saints","LE"]
+            ]
+        }
+    },
+    "Season 3": {
+        "wwwww": {
             "name": "wwwww",
-            "team": "Giants",
+            "team": "Cowboys",
             "pick": "1",
             "draft": [
                 [
                     "Raiders",
                     "Davante Adams",
                     "WR"
-                ],
-                [
-                    "49ers",
-                    "Trent Williams",
-                    "LT"
-                ],
-                [
-                    "Chiefs",
-                    "Travis Kelce",
-                    "TE"
-                ],
-                [
-                    "Buccaneers",
-                    "Tom Brady",
-                    "QB"
-                ],
-                [
-                    "49ers",
-                    "George Kittle",
-                    "TE"
-                ],
-                [
-                    "Cowboys",
-                    "Zack Martin",
-                    "RG"
                 ],
                 [
                     "Titans",
                     "Derrick Henry",
                     "HB"
-                ],
-                [
-                    "Dolphins",
-                    "Tyreek Hill",
-                    "WR"
-                ],
-                [
-                    "Packers",
-                    "Aaron Rodgers",
-                    "QB"
-                ],
-                [
-                    "Panthers",
-                    "Christian McCaffrey",
-                    "HB"
-                ],
-                [
-                    "Cardinals",
-                    "DeAndre Hopkins",
-                    "WR"
-                ],
-                [
-                    "Browns",
-                    "Nick Chubb",
-                    "HB"
-                ],
-                [
-                    "Steelers",
-                    "T.J. Watt",
-                    "LOLB"
-                ],
-                [
-                    "Colts",
-                    "Jonathan Taylor",
-                    "HB"
-                ],
-                [
-                    "Chiefs",
-                    "Patrick Mahomes",
-                    "QB"
-                ],
-                [
-                    "Colts",
-                    "Quenton Nelson",
-                    "LG"
-                ],
-                [
-                    "Bills",
-                    "Stefon Diggs",
-                    "WR"
-                ],
-                [
-                    "Cowboys",
-                    "Tyron Smith",
-                    "LT"
-                ]
-            ]
-        }
-    },
-    "season 3": {
-        "o3b-YkWQehYeyTtfAAAC": {
-            "name": "Dallas",
-            "team": "Patriots",
-            "pick": "1",
-            "draft": [
-                [
-                    "Raiders",
-                    "Davante Adams",
-                    "WR"
                 ]
             ]
         },
-        "ghWSDmieoGlwG72-AAAD": {
+        "Dallas": {
             "name": "Dallas",
-            "team": "Giants",
+            "team": "Eagles",
             "pick": "2",
-            "draft": []
+            "draft": [
+                [
+                    "49ers",
+                    "Trent Williams",
+                    "LT"
+                ]
+            ]
         }
     }
 }

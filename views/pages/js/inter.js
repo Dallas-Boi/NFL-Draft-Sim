@@ -278,7 +278,16 @@ function loadTeams() {
     var a_teams = ["Bills", "Dolphins", "Patriots", "Jets", "Ravens", "Bengals", "Browns", "Steelers", "Texans", "Colts", "Jaguars", "Titans", "Broncos", "Chiefs", "Raiders", "Chargers"]
     var sect = ["east", "north", "south", "west"]
     // It will help stuff not be repeated
-    const repeat = () => {
+    const repeat = (name, side, com) => {
+        // Makes the image container
+        var con = document.createElement("div")
+        con.className = "no_touchy"
+        // Makes the strike line
+        var line = document.createElement("span")
+        line.className = "red"
+        line.id = `strike_${name}`
+        
+        // Makes the Img elm
         var img = document.createElement("img")
         img.className = "teamIcon"
         img.tabIndex = "0"
@@ -293,18 +302,23 @@ function loadTeams() {
             this.className = "teamIcon Selected_t"
             socket.emit("picked_team", this.value)
         })
-        return img
+        
+        img.id = name
+        img.value = name
+        img.src = `./teams/${name}.png`
+        // Appends the new elements
+        con.appendChild(line)
+        con.appendChild(img)
+        // Shows element on screen
+        $(`#${side}_${com}`).append(con)
+        // Hides the strike through line
+        $(`#strike_${name}`).hide()
     }
     // Goes through the Section for NFC
     try {
         for (var i=0; i < n_teams.length; i++) { // All players
             for (var j=0; j < 4; j++) { // Every section
-                let img = repeat()
-                img.id = n_teams[(i*4)+j]
-                img.src = `./teams/${n_teams[(i*4)+j]}.png`
-                img.value = n_teams[(i*4)+j]
-                
-                document.getElementById(`nfc_${sect[i]}`).appendChild(img)
+                repeat(n_teams[(i*4)+j], "nfc", sect[i])
             }
         }
     } catch (e) {}
@@ -313,14 +327,11 @@ function loadTeams() {
     try {    
         for (var i=0; i < a_teams.length; i++) { // All players
             for (var j=0; j < 4; j++) { // Every section
-                let img = repeat()
-                img.id = a_teams[(i*4)+j]
-                img.src = `./teams/${a_teams[(i*4)+j]}.png`
-                img.value = a_teams[(i*4)+j]
-                document.getElementById(`afc_${sect[i]}`).appendChild(img)
+                repeat(a_teams[(i*4)+j], "afc", sect[i])
             }
         }
     } catch (e) {}
 }
-// So I can call this file with out it loading teams
+
+// So I can call this file with out it loading the teams
 if (window.location.pathname == "/") {loadTeams()}

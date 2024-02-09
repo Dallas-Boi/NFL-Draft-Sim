@@ -1,5 +1,4 @@
 // Made 2-1-24
-
 const express = require("express");
 const partials = require('express-partials');
 const fs = require("fs");
@@ -39,6 +38,16 @@ app.get('/draft', (req, res) => {
     res.send(d)
 })
 
+// Returns the taken teams
+function getTaken(dic, loc) {
+    var con_k = Object.keys(dic)
+    var keys = []
+    con_k.forEach(function(item, index) {
+        keys.push(dic[item][loc])
+    })
+    return keys
+}
+
 // All variables for the Socket IO connects
 var con = {}
 var ready = 0
@@ -46,8 +55,9 @@ var ready = 0
 // Socket IO handlers
 io.on("connection", (socket) => {
     console.log('a user connected');
-    con[socket.id] = {ready: false}
-    
+    con[socket.id] = {ready: false, team:"", pick:""}
+    // Sends to the client that just connected of the taken teams
+    socket.emit("disable_items", [getTaken(con, "team"),getTaken(con, "pick")]) 
     // When the client changes their socket id
     socket.on("change_id", (data) => {
         // Checks if this socket ID was taken
@@ -63,9 +73,11 @@ io.on("connection", (socket) => {
     // When the client Disconnects from the server
     socket.on('disconnect', () => {
         if (ready !== 0) {ready--} // Removes that player being ready 
-        console.log('user disconnected');
         delete con[socket.id]
+        console.log('user disconnected');
+        socket.broadcast.emit("disable_items", [getTaken(con, "team"),getTaken(con, "pick")])
     });
+
     // When a client is ready
     socket.on("clicked_ready", (data_raw) => {
         var data = JSON.parse(data_raw)
@@ -142,14 +154,15 @@ io.on("connection", (socket) => {
 
     // Sends the clients a message when a client clicks a team icon
     socket.on("picked_team", (data) => {
-        con[socket.id]["team"] = data
-        var con_k = Object.keys(con)
-        var keys = []
-        con_k.forEach(function(item, index) {
-            keys.push(con[item]["team"])
-        })
-        socket.broadcast.emit("disable_team", [keys]) // Sends all clients (except sender) the team to disable
+        // 0 = team 
+        con[socket.id]["team"] = data      
+        socket.broadcast.emit("disable_items", [getTaken(con, "team"),getTaken(con, "pick")]) // Sends all clients (except sender) the team to disable
     }) 
+    // Sends the clients a message when a client clicks a pick
+    socket.on("picked_pick", (data) => {
+        con[socket.id]["pick"] = data      
+        socket.broadcast.emit("disable_items", [getTaken(con, "team"),getTaken(con, "pick")]) // Sends all clients (except sender) the team to disable
+    })
 })
 
 // Infinite Server loop

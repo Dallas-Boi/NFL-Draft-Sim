@@ -203,6 +203,30 @@ body {background-color: grey;}
     max-width: 100%;
 }
 
+* {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.no_touchy {
+    align-self: flex-start;
+    width: 4em;
+    height: inherit;
+    float: inline-start;
+    display: flex;
+}
+/* Image Strike Through */
+.red {
+    background-color: red;
+    display: flex;
+    position: absolute;
+    align-self: center;
+    width: inherit;
+    height: 0.5em;
+}
+
+
+
 /* The End Screen Elements */
 #endScreen {
     width:20em;

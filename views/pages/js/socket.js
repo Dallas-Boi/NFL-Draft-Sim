@@ -37,6 +37,15 @@ $("#name_inp").change(function() {
     socket.emit("change_id", this.value)
 })
 
+// When the user clicks a pick input
+$('input[name="draft#"]').click(function() {
+    if (this.disabled == true) {
+        notify_client("Error", "This Pick Was Already Selected")
+        return
+    }
+    socket.emit("picked_pick", this.value)
+})
+
 // If an input error occured
 socket.on("input_e", (msg) => {
     if (msg.length == 2) {
@@ -77,6 +86,37 @@ socket.on("pick draft", (data) => {
     pickDraft(data[0], data[1])
 })
 
+// When a team needs to be disabled
+socket.on("disable_items", (data) => {
+    // 0 = teams | 1 = picks
+
+    // This will disable the teams
+    var this_id = ""
+    // Checks to see if the current use selected any team yet
+    try {this_id = $('.Selected_t')[0].id} catch {} // Error Handler
+    // Resets the disabled teams
+    $("img[class='teamIcon disabled_team']").attr("class", "teamIcon")
+    $("span[class='red']").hide()
+    // Disables the given Teams
+    console.log(data[0])
+    data[0].forEach((item, index) => {
+        if (this_id !== item) {
+            $(`#${item}`).attr("class","teamIcon disabled_team")
+            $(`#strike_${item}`).show()
+        }
+    });
+
+    // This will disable the picks
+    var this_pick = ""
+    try {this_pick = $('input[name="draft#"]:checked').val()} catch {}
+    // Resets all picks
+    $(`input[name="draft#"]`).attr("disabled", false)
+    data[1].forEach((item, index) => {
+        console.log(item, this_pick)
+        if (this_pick !== item) {$(`#rad_${item}`).attr("disabled", true)}
+    });
+})
+
 // Error Handler
 socket.on("connect_error", (err) => {
     // the reason of the error, for example "xhr poll error"
@@ -87,16 +127,3 @@ socket.on("connect_error", (err) => {
         $("#ready_btn").text("Ready?")
     }
 });
-
-// When a team needs to be disabled
-socket.on("disable_team", (data) => {
-    var this_id = ""
-    // Checks to see if the current use selected any team yet
-    try {this_id = $('.Selected_t')[0].id} catch {} // Error Handler
-    // Resets the disabled teams
-    $("img[class='teamIcon disabled_team']").attr("class", "teamIcon")
-    // Disables the given Teams
-    data[0].forEach((item, index) => {
-        if (this_id !== item) {$(`#${item}`).attr("class","teamIcon disabled_team")}
-    });
-})
