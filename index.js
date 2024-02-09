@@ -60,8 +60,9 @@ io.on("connection", (socket) => {
     socket.emit("disable_items", [getTaken(con, "team"),getTaken(con, "pick")]) 
     // When the client changes their socket id
     socket.on("change_id", (data) => {
+        console.log(data)
         // Checks if this socket ID was taken
-        if (con[data] != undefined) {
+        if (con[data] !== undefined) {
             socket.emit("input_e", ["This name was already taken.", "change"])
             return
         }

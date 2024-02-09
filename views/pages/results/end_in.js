@@ -52,15 +52,17 @@ function sortPicks(player) {
     $(`#${player}`).text("")
     // Handles all draft players and sorts them
     var d_tm = {}
+    
     // Sorts all players by team
     for (var d=0; d < player_data[player]["draft"].length; d++) {
         var this_p = player_data[player]["draft"][d]
-        if (!(d_tm[this_p[0]])) { // if d_tm does not have this team
-            d_tm[this_p[0]] = []
+        if (!(d_tm[this_p[1]])) { // if d_tm does not have this team
+            d_tm[this_p[1]] = []
         }
         // Adds the player to the team list
-        d_tm[this_p[0]].push(this_p)
+        d_tm[this_p[1]].push(this_p)
     }
+    console.log(d_tm)
     // Sets the keys
     var d_tm_k = Object.keys(d_tm)
     // Places the player
@@ -78,14 +80,14 @@ function unsortPicks(player) {
     var cur = player_data[player]
     // Places the player
     for (var t=0; t < cur["draft"].length; t++) {
-        // 0 = team | 1 = Name | 2 = Position
+        // 0 = Name | 1 = Team | 2 = Position
         $(`#${player}`).append(placePick(cur["draft"][t][0], cur["draft"][t][1], cur["draft"][t][2]))
     }
 }
 
 // Returns the made nfl player element
-function placePick(tm, play, pos) {
-    // Team = 0 | Name = 1 | Position = 2
+function placePick(play, tm, pos) {
+    // Name = 0 | Team = 1 | Position = 2
     var t_box = document.createElement("div")
     t_box.className = "draftBox"
     // Name 
@@ -108,9 +110,10 @@ function placePick(tm, play, pos) {
 
 // When the user clicks the sorted / unsorted radio
 $('#sort').change(function() {
+    console.log(this.value)
     for (var i=0; i < players.length; i++) {
-        if (this.value == "false") {unsortPicks(players[i])}
-        else if (this.value == "true") {sortPicks(players[i])}
+        if (this.value == "unsort") {unsortPicks(players[i])}
+        else if (this.value == "sort") {sortPicks(players[i])}
     }
 })
 

@@ -34,7 +34,9 @@ $("#ready_btn").bind("click", function() {
 
 // When the user changes their name
 $("#name_inp").change(function() {
-    socket.emit("change_id", this.value)
+    if ((this.value).replace(" ") == "") {return}
+    var n = (this.value).charAt(0).toUpperCase() + this.value.slice(1)
+    socket.emit("change_id", n)
 })
 
 // When the user clicks a pick input
@@ -122,7 +124,7 @@ socket.on("connect_error", (err) => {
     // the reason of the error, for example "xhr poll error"
     console.log(err.message);
     if (err.message == "xhr poll error") {
-        notify_client("Server Error","Failed to Connect to server. Either the Server is offline of client can not see the hosted server. Please contact the Server Admin.")
+        notify_client("Server Error","Failed to Connect to server. The Server is offline or client can not see the hosted server. Please contact the Server Admin.")
         isReady = false
         $("#ready_btn").text("Ready?")
     }
