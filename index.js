@@ -13,7 +13,6 @@ const io = new Server(server);
 
 const opts = require("./draft_settings.json")
 const id = opts["id"] // ID for the season
-var nonDraft_Players = opts["not_draftable"] // Players in this list will not appear on the draft list 
 
 // Server Headers
 app.set('view engine', 'ejs');
@@ -51,6 +50,36 @@ function getTaken(dic, loc) {
 // All variables for the Socket IO connects
 var con = {}
 var ready = 0
+var s = require("./draft_settings.json")
+var old_play = s["not_draftable"]
+
+// Checks the ready variable
+function check_ready() {
+    // Checks if all players are ready
+    if (ready == Object.keys(con).length) {
+        var d = require("./drafts.json") // gets JSON file
+        d[id] = {}
+        // Sorts the Order based on pick
+        var order = []
+        var keys = Object.keys(con)
+        // Goes through each player and puts them in order
+        for (var i=0; i < keys.length; i++) {
+            order[parseInt(con[keys[i]]["pick"])-1] = con[keys[i]]
+            d[id][con[keys[i]]["id"]] = {
+                name: con[keys[i]]["name"],
+                team: con[keys[i]]["team"],
+                pick: con[keys[i]]["pick"],
+                draft: con[keys[i]]["old_picks"]
+            }                
+        }
+        fs.writeFile("drafts.json", JSON.stringify(d, null, 4),err => {
+            // Checking for errors 
+            if (err) throw err;
+        });
+        ready = 0
+        io.emit("start_draft", [order, old_play])
+    }
+}
 
 // Socket IO handlers
 io.on("connection", (socket) => {
@@ -95,32 +124,7 @@ io.on("connection", (socket) => {
         con[socket.id] = {ready: true, team: data["team"], pick: data["pick"], name: data["name"], id:socket.id}
         ready++
         socket.emit("return id", socket.id) // Gives the client their ID
-        // Checks if all players are ready
-        if (ready == Object.keys(con).length) {
-            var d = require("./drafts.json") // gets JSON file
-            d[id] = {}
-            // Sorts the Order based on pick
-            var order = []
-            var keys = Object.keys(con)
-            // Goes through each player and puts them in order
-            for (var i=0; i < keys.length; i++) {
-                order[parseInt(con[keys[i]]["pick"])-1] = con[keys[i]]
-                d[id][con[keys[i]]["id"]] = {
-                    name: con[keys[i]]["name"],
-                    team: con[keys[i]]["team"],
-                    pick: con[keys[i]]["pick"],
-                    draft: []
-                }                
-            }
-            fs.writeFile("drafts.json", JSON.stringify(d, null, 4),err => {
-                // Checking for errors 
-                if (err) throw err;
-         
-                // Success 
-                console.log("Done writing");
-            });
-            io.emit("start_draft", [order, nonDraft_Players])
-        }
+        check_ready()
     })
 
     // When a client is unready
@@ -163,6 +167,49 @@ io.on("connection", (socket) => {
     socket.on("picked_pick", (data) => {
         con[socket.id]["pick"] = data      
         socket.broadcast.emit("disable_items", [getTaken(con, "team"),getTaken(con, "pick")]) // Sends all clients (except sender) the team to disable
+    })
+
+    // ===============================
+    // Old Picks
+    // ===============================
+
+    // When a player picks one of their old players
+    socket.on("load_old", (data) => {
+        var con_set = require("./draft_settings.json")
+        var draft = require("./drafts.json")
+
+        con[socket.id]["old_picks"] = []
+        // Checks if old picks is enabled
+        if (con_set["pick_old"]["active?"] == true) {
+            
+            // If the data exist
+            if (draft[con_set["pick_old"]["pre_id"]][socket.id] !== undefined) {
+                console.log("Success")
+                socket.emit("loading old draft", draft[con_set["pick_old"]["pre_id"]][socket.id])
+                return
+            }
+            socket.emit("invalid player") // If there is no existence of this client
+        }
+        ready++
+        check_ready()
+    }) 
+
+    // When a client picks a old player
+    socket.on("pick old player", (data) => {
+        var con_set = require("./draft_settings.json")
+        var draft = require("./drafts.json")
+        // Adds the player to the old pick
+        var player_data = draft[con_set["pick_old"]["pre_id"]][socket.id]["draft"][parseInt(data)]
+        // Writes the data to the draft_settings
+        con[socket.id]["old_picks"].push(player_data)
+        old_play.push(player_data[1])
+        
+        // If the client picked the correct amount of picks
+        if (con[socket.id]["old_picks"].length == con_set["pick_old"]["amount"]) {
+            socket.emit("ready this client")
+            ready++
+            check_ready()
+        }
     })
 })
 

@@ -56,11 +56,11 @@ function sortPicks(player) {
     // Sorts all players by team
     for (var d=0; d < player_data[player]["draft"].length; d++) {
         var this_p = player_data[player]["draft"][d]
-        if (!(d_tm[this_p[1]])) { // if d_tm does not have this team
-            d_tm[this_p[1]] = []
+        if (!(d_tm[this_p[0]])) { // if d_tm does not have this team
+            d_tm[this_p[0]] = []
         }
         // Adds the player to the team list
-        d_tm[this_p[1]].push(this_p)
+        d_tm[this_p[0]].push(this_p)
     }
     console.log(d_tm)
     // Sets the keys
@@ -86,7 +86,7 @@ function unsortPicks(player) {
 }
 
 // Returns the made nfl player element
-function placePick(play, tm, pos) {
+function placePick(tm, play, pos) {
     // Name = 0 | Team = 1 | Position = 2
     var t_box = document.createElement("div")
     t_box.className = "draftBox"
@@ -119,7 +119,7 @@ $('#sort').change(function() {
 
 // When the user changes the draft season
 $("#draft_cat").change(function() {
-    $("#BOX").remove()
+    $("div[class='top_con result']").remove()
     placeBoxes(d_data[this.value])
 })
 

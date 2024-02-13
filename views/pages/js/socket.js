@@ -6,6 +6,7 @@ const socket = io();
 var uid = ""
 var current_team = ""
 var isReady = false
+var page = 0
 
 // When the client clicks the ready button
 $("#ready_btn").bind("click", function() {
@@ -63,17 +64,25 @@ socket.on("return id", (id) => {uid = id})
 
 // When called it will start the draft
 socket.on("start_draft", (data_p) => {
-    // data_p | 0 = Team Order | 1 = non draftable players
-    $("#teamPicks").hide()
-    $("#main").show()
-    for (var i = 0; i < data_p[0].length; i++) {
-        placeClients(data_p[0][i]["team"], data_p[0][i]["pick"], data_p[0][i]["id"])
+
+    if (page == 0) {
+        socket.emit("load_old")
+        page++
     }
-    changeTurn(uid)
-    placePlayers()
-    // Removes 
-    for (var i=0; i < data_p[1].length-1; i++) {
-        $(`div[id='${data_p[1][i]}']`).remove()
+    else if (page == 1) {
+        // data_p | 0 = Team Order | 1 = non draftable players
+        $("#teamPicks").hide()
+        $("#ready").hide()
+        $("#main").show()
+        for (var i = 0; i < data_p[0].length; i++) {
+            placeClients(data_p[0][i]["team"], data_p[0][i]["pick"], data_p[0][i]["id"])
+        }
+        changeTurn(uid)
+        placePlayers()
+        // Removes 
+        for (var i=0; i < data_p[1].length-1; i++) {
+            $(`div[id='${data_p[1][i]}']`).remove()
+        }
     }
 })
 

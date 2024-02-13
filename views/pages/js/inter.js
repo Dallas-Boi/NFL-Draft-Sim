@@ -1,11 +1,13 @@
 // Made Wednesday 1-31-24
 $("#main").hide() // Hides the Draft screen
 $("#endScreen").hide() // Hides the End Screen
+$("#previous").hide() // Hides the previous player pick
+$("#ready").hide() // Hides the ready text
 
 // This is the items for the current turn and the drafting teams
 var turn = -1
 var draftTeams = []
-var draft_rounds = 18
+var draft_rounds = 13
 var current_round = 1
 var ids = []
 
@@ -22,7 +24,10 @@ function changeTurn() {
     } 
     // Disables all draft btns 
     $(".draft_btn").attr("disabled", true) 
-    if (uid == ids[turn]) { $(".draft_btn").attr("disabled", false)}
+    if (uid == ids[turn]) { 
+        $(".draft_btn").attr("disabled", false)
+        notify_client("Your Turn", "It is now your turn to pick.")
+    }
 
     // After changing the turn it will update the clientData elements
     document.getElementById("cur_name").textContent = draftTeams[turn]
@@ -42,7 +47,7 @@ function placePlayers() {
         // Checks if the player has JR/II
         if (amo >= 7) {abrivi = ` ${allPlayers[i][amo-5]}`}
         // Player Container
-        con.id = `${allPlayers[i][0]} ${allPlayers[i][1]}${abrivi}`
+        con.id = (`${allPlayers[i][0]} ${allPlayers[i][1]}${abrivi}`).toLowerCase()
         con.className = `draftBox ${pos}`
         con.value = tm
         // Player Name
@@ -65,7 +70,7 @@ function placePlayers() {
         d_btn.textContent = "+"
         // When the player clicks the draft button
         d_btn.addEventListener("click", function() {
-            var n = this.parentElement.id // The player name
+            var n = (this.id).replace("draft_", "") // The player name
             var t = this.parentElement.value
             var p = (this.parentElement.className).replace("draftBox ", "")
             socket.emit("pickDraft", [draftTeams[turn], n, p, t])
@@ -113,13 +118,14 @@ function placeClients(team, num, id) {
 
 // Adds the players name to the clients
 function pickDraft(team, player) {
+    var low_player = player.toLowerCase()
     // Puts the players name / Position / and Number on the draft team side
-    document.getElementById(`${team}_pick`).innerHTML = document.getElementById(player).children[0].innerHTML
+    document.getElementById(`${team}_pick`).innerHTML = document.getElementById(low_player).children[0].innerHTML
 
     // This puts the player in the clients "My Picks"
-    document.getElementById(player).children[2].remove()
-    if (uid == ids[turn]) {player_picks.appendChild(document.getElementById(player))}
-    else {document.getElementById(player).remove()}
+    document.getElementById(low_player).children[2].remove()
+    if (uid == ids[turn]) {player_picks.appendChild(document.getElementById(low_player))}
+    else {document.getElementById(low_player).remove()}
     // Changes the turn for all players
     changeTurn()
 }
@@ -266,10 +272,10 @@ spe_p.addEventListener("click", function() {
 })
 
 // When the client uses the search box for their player
-searchBox.addEventListener("change", function() {
+$("#searchPlayer").change(function() {
     // If the input for the search box is nothing then it will show all players
     $("#draft_players").children().hide()
-    $(`div[id*="${this.value}" i]`).show()
+    $("#draft_players").find(`div[id*="${this.value}"]`).show()
 })
 
 // This will load all the NFL teams in the correct spot

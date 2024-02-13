@@ -1,19 +1,11 @@
 {
-    "id": "Season 2",
+    "id": "Season 3",
     "not_draftable": [
-        "Patrick Mahomes",
-        "Tyreek Hill",
-        "Jaire Alexander",
-        "Travis Kelce",
-        "Fred Warner",
-        "Myles Garrett",
-        "Aaron Rodgers",
-        "Mike Evans",
-        "Jalen Ramsey",
-        "Lavonte David"
+
     ],
     "pick_old": {
         "active?": true,
-        "amount": 5
+        "pre_id": "Season 2",
+        "amount": 3
     }
 }

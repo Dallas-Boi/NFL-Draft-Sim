@@ -14,6 +14,7 @@
             if (type == "Server Error") {color = "darkred"}
             else if (type == "Error") {color = "red"}
             else if (type == "Successful") {color = "lime"}
+            else if (type == "Your Turn") {color = "orange"}
             // Shows the element and text
             $("#notify").fadeIn(1000)
             $(`#msg_title`).html(`<b style="color:${color}">${type}</b>`)
