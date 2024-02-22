@@ -79,7 +79,9 @@ function unsortPicks(player) {
     $(`#${player}`).text("")
     var cur = player_data[player]
     // Places the player
+    console.log(player)
     for (var t=0; t < cur["draft"].length; t++) {
+        console.log(cur["draft"][t][1],"-", cur["draft"][t][2])
         // 0 = Name | 1 = Team | 2 = Position
         $(`#${player}`).append(placePick(cur["draft"][t][0], cur["draft"][t][1], cur["draft"][t][2]))
     }

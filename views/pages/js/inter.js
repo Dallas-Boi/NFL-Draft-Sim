@@ -1,36 +1,40 @@
 // Made Wednesday 1-31-24
-$("#main").hide() // Hides the Draft screen
-$("#endScreen").hide() // Hides the End Screen
-$("#previous").hide() // Hides the previous player pick
-$("#ready").hide() // Hides the ready text
+$(".page").hide()
+$("#teamPicks").show()
 
-// This is the items for the current turn and the drafting teams
-var turn = -1
-var draftTeams = []
-var draft_rounds = 13
-var current_round = 1
-var ids = []
+// This is the items for the current curPick and the drafting teams
+var draftPicks = []
+var draft_rounds;
+var curPick = -1
+var totalPick = 0
+var current_round = 0
+var ids = [] // Change
 
-// Handles the turn based items
+// Handles the curPick based items
 function changeTurn() {
-    turn++
-    // If the turn needs to restart
-    if (turn >= draftTeams.length) {
-        turn = 0
+    curPick++
+    totalPick++ // This is only used for the trade
+    // If the curPick needs to restart
+    if (curPick % ids.length == 0) { // If the 
         current_round++
+        curPick = 0
+        // This will end the draft
         if (current_round == draft_rounds+1) {
-            $("#endScreen").show();$("#main").hide();
-            return} // This will end the draft
+            socket.emit("end_draft", current_team)
+            window.location.href = "/results"
+            return
+        } 
     } 
     // Disables all draft btns 
     $(".draft_btn").attr("disabled", true) 
-    if (uid == ids[turn]) { 
+    // Checks if the current turn is this client
+    if (draftPicks[current_round][curPick] == current_team) { // Change
         $(".draft_btn").attr("disabled", false)
         notify_client("Your Turn", "It is now your turn to pick.")
     }
 
-    // After changing the turn it will update the clientData elements
-    document.getElementById("cur_name").textContent = draftTeams[turn]
+    // After changing the curPick it will update the clientData elements
+    document.getElementById("cur_name").textContent = draftPicks[current_round][curPick]
     document.getElementById("cur_r").textContent = `${current_round}/${draft_rounds}`
 }
 
@@ -73,7 +77,7 @@ function placePlayers() {
             var n = (this.id).replace("draft_", "") // The player name
             var t = this.parentElement.value
             var p = (this.parentElement.className).replace("draftBox ", "")
-            socket.emit("pickDraft", [draftTeams[turn], n, p, t])
+            socket.emit("pickDraft", [draftPicks[current_round][curPick] , n, p, t])
         })
         // Appends everything
         con.appendChild(pname)
@@ -111,9 +115,8 @@ function placeClients(team, num, id) {
     con.append(div)
     con.append(pn)
     team_picks.appendChild(con)
-    // Adds the team to the draftTeams
-    draftTeams.push(team)
-    ids.push(id)
+    // Adds the team to the draftPicks
+    ids.push(team)
 }
 
 // Adds the players name to the clients
@@ -124,9 +127,9 @@ function pickDraft(team, player) {
 
     // This puts the player in the clients "My Picks"
     document.getElementById(low_player).children[2].remove()
-    if (uid == ids[turn]) {player_picks.appendChild(document.getElementById(low_player))}
+    if (current_team == draftPicks[current_round][curPick] ) {player_picks.appendChild(document.getElementById(low_player))}
     else {document.getElementById(low_player).remove()}
-    // Changes the turn for all players
+    // Changes the curPick for all players
     changeTurn()
 }
 

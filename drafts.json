@@ -576,40 +576,15 @@
         }
     },
     "Season 3": {
-        "Dallas": {
+        "Dolphins": {
             "name": "Dallas",
-            "team": "Jets",
+            "team": "Dolphins",
             "pick": "1",
             "draft": [
-                [
-                    "Browns",
-                    "Myles Garrett",
-                    "RE"
-                ],
-                [
-                    "Packers",
-                    "Aaron Rodgers",
-                    "QB"
-                ],
-                [
-                    "Rams",
-                    "Jalen Ramsey",
-                    "CB"
-                ],
                 [
                     "Raiders",
                     "Davante Adams",
                     "WR"
-                ],
-                [
-                    "Browns",
-                    "Myles Garrett",
-                    "RE"
-                ],
-                [
-                    "Rams",
-                    "Jalen Ramsey",
-                    "CB"
                 ]
             ]
         }

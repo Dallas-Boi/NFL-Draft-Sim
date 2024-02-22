@@ -20,6 +20,7 @@ body {background-color: grey;}
 
 .top_con {
     position: relative;
+    width:50em;
     height:100%;
     max-width: 100%;
     max-height: 100%;
@@ -27,6 +28,8 @@ body {background-color: grey;}
     justify-content: center;
     align-content: center;
     background-color: white;
+    display: flex;
+    flex-flow: column;
 }
 
 .navbar {
@@ -35,10 +38,11 @@ body {background-color: grey;}
 	overflow: auto;
     flex-wrap: nowrap;
     justify-content: center;
+    flex: 0 0 auto;
 }
 
 .navbar button {
-    width:10em;
+    width:100%;
     max-width: inherit;
     height:5em;
     background-color: blue;
@@ -53,9 +57,10 @@ body {background-color: grey;}
             box-shadow: inset 0px 0px 5px #c1c1c1;
 }
 
-#subNav {
+.subNav {
     display:flex;
 	overflow: auto;
+    flex: 0 0 auto;
 }
 
 #searchPlayer {width:100%;}
@@ -66,13 +71,14 @@ body {background-color: grey;}
     color:white;
 }
 
-/* This fixes the issue where the team container navbar buttons does not fix the container */
-#team_container > .navbar > button {width:20em;}
+/* This should fix height problems */
+.fixHeight {display:flex}
 
 .infoBox {
     overflow-x: hidden;
     overflow-y: auto;
-    height: 86.75%;
+    height:80%;
+    flex:1;
 }
 
 /* PlayerBox elements */
@@ -163,6 +169,7 @@ body {background-color: grey;}
 
 #curDraft {margin-top: 5em;}
 #curRound {margin-top:2em;}
+#trade_btn {margin-top: 2em;}
 
 /* The Team Picks Elements */
 .nflTeams {
@@ -201,7 +208,7 @@ body {background-color: grey;}
     text-align: center;
 }
 
-#ready_btn {
+#ready_btn, #trade_btn {
     font-size: 15px;
     font-weight: bold;
     border-radius: 10em;
@@ -241,9 +248,7 @@ body {background-color: grey;}
     font-weight: bold;
     font-size: 25px;
 }
-#endSub {
-    margin-top: 1em;
-}
+#endSub {margin-top: 1em;}
 
 /* Result Menu */
 #head {
@@ -263,12 +268,14 @@ body {background-color: grey;}
     font-size: 20px;
 }
 
-.result {height:89%;}
-.result .navbar {
+.result {
+    height:89%;
+    width:30em;
+}
+.result .navbar, .t_menu .navbar {
     background-color: blue;
     color: white;
     text-align: center;
-    gap:2em;
     justify-content: center;
 }
 
@@ -300,9 +307,7 @@ body {background-color: grey;}
 }
 
 /* Pick Old Players tab */
-#play_pick {
-    width:20em;
-}
+#play_pick {width:20em;}
 
 #pre_nav {
     background-color: blue;
@@ -315,6 +320,52 @@ body {background-color: grey;}
     display: flex;
 }
 
-#play_pick .infoBox {
-    height: 90%;
+#play_pick .infoBox {height: 90%;}
+
+/* Trade Menu Elements */
+.trade_c {
+    z-index: 20;
+    position: absolute;
+    left:0;
 }
+
+.t_menu {
+    width:15em;
+    height:10em;
+    background-color: white;
+    border:1px solid black;
+    width: 25em;
+    height:30em;
+    display: flex;
+    flex-flow: column;
+}
+
+.trade .player_name {width: 7em;}
+
+#playerSel {
+    width: 100%;
+    height: 2em;
+    text-align: center;
+    background-color: white;
+    display: flex;
+}
+
+#playerSel > * {border-radius: 0;}
+
+.trade_act {
+    height: 2.25em;
+    width: 100%;
+    background-color: rgb(79, 79, 79);
+    color:white
+}
+
+#trade_title {
+    justify-content: center;
+    align-items: center;
+    font-size: 16.5;
+    font-weight: bold;
+}
+
+#trade_items .draftBox .player_ovr {margin-right:2em}
+#trade_items > * .select_draft {margin-right:1em}
+.t_itm .draftBox > * {margin-right: 0;}

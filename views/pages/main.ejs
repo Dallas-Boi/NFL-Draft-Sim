@@ -7,7 +7,7 @@
     </head>
     <body>
         <%- include('../partials/message'); %>
-        <div id="endScreen">
+        <div id="endScreen" class="page">
             <div id="endTitle">That's It</div>
             <div id="endSub">Any Idea's Lmk what I could add.<br><br>All Picks are Logged with the player Name, Team, and Position.</div>
         </div>
@@ -17,11 +17,8 @@
                     <button id="draft" class="selected">Draft Results</button>
                     <button id="their">My Picks</button>
                 </div>
-                <div id="picks_t" class="infoBox">
-                </div>
-                <div id="picks_p" class="infoBox" hidden>
-                    
-                </div>
+                <div id="picks_t" class="infoBox"></div>
+                <div id="picks_p" class="infoBox" hidden></div>
             </div>
             <div id="clientData" class="top_con">
                 <div id="curDraft">
@@ -32,6 +29,9 @@
                     Current Draft Round:<br>
                     <div id="cur_r"></div>
                 </div>
+                <div id="trade">
+                    <button id="trade_btn">Trade</button>
+                </div>
             </div>
             <div id="player_container" class="top_con">
                 <div class="navbar">
@@ -40,12 +40,10 @@
                     <button id="def_btn">Defense</button>
                     <button id="spe_btn">Special</button>
                 </div>
-                <div id="subNav">
+                <div id="subNav" class="subNav">
                     <input id="searchPlayer" placeholder="Player's Name">
                 </div>
-                <div id="draft_players" class="infoBox">
-                    
-                </div>
+                <div id="draft_players" class="infoBox"></div>
             </div>
         </div>
         <div id="teamPicks" class="page">
@@ -107,12 +105,8 @@
         </div>
         <div id="previous" class="page" >
             <div id="play_pick" class="top_con">
-                <div id="pre_nav" class="navbar">
-                
-                </div>
-                <div id="pick_players" class="infoBox">
-                    
-                </div>
+                <div id="pre_nav" class="navbar"></div>
+                <div id="pick_players" class="infoBox"></div>
             </div>
         </div>
         <div id="ready" class="page">
@@ -120,8 +114,43 @@
                 Waiting for Other players to pick their player(s).
             </div>
         </div>
+        <div id="trade_con" class="page trade_c">
+            <div class="t_menu">
+                <div id="y_trade_opt" class="navbar">
+                    <button id="opt_picks" class="y_btn selected">Draft Picks</button>
+                    <button id="opt_players" class="y_btn">Players</button>
+                </div>
+                <div id="y_trade_items" class="infoBox t_itm"></div>
+            </div>
+            <div class="t_menu">
+                <div id="o_trade_opt" class="navbar">
+                    <button id="opt_picks" class="o_btn selected">Draft Picks</button>
+                    <button id="opt_players" class="o_btn">Players</button>
+                </div>
+                <div class="subnav">
+                    <select id="playerSel">
+                        <option value="none">Pick A Team</option>
+                    </select>
+                </div>
+                <div id="o_trade_items" class="infoBox t_itm"></div>
+            </div>
+            <div id="end_trade">
+                <button id="confirm_trade" class="trade_act">Send Trade</button>
+                <button id="cancel_trade" class="trade_act">Canel Trade</button>
+            </div>
+        </div>
+        <div id="s_trade_con" class="page trade_c">
+            <div id="sent_trade" class="t_menu">
+                <div id="trade_title" class="navbar"></div>
+                <div id="traded_items" class="infoBox t_itm"></div>
+                <div id="actions">
+                    <button id="accept" class="trade_act">Accept</button>
+                    <button id="cancel" class="trade_act">Decline</button>
+                </div>
+            </div>
+        </div>
         <script type="text/javascript" src="js/inter.js"></script>
         <script type="text/javascript" src="js/socket.js"></script>
-        <script tyle="text/javascript" src="js/prev_pick.js"></script>
+        <script tyle="text/javascript" src="js/draft_abil.js"></script>
     </body>
 </html>

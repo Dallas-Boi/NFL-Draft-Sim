@@ -12,8 +12,8 @@
             var color
             // Sets the color
             if (type == "Server Error") {color = "darkred"}
-            else if (type == "Error") {color = "red"}
-            else if (type == "Successful") {color = "lime"}
+            else if (["Error", "Declined"].includes(type)) {color = "red"}
+            else if (["Successful", "Accepted"].includes(type)) {color = "lime"}
             else if (type == "Your Turn") {color = "orange"}
             // Shows the element and text
             $("#notify").fadeIn(1000)

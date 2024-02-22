@@ -7,11 +7,13 @@ var uid = ""
 var current_team = ""
 var isReady = false
 var page = 0
+var pickNum
 
 // When the client clicks the ready button
 $("#ready_btn").bind("click", function() {
+    console.log(this.value)
+    if ($("#name_inp").val().replace(" ", "") == "") {notify_client("Error", "Your Name Can Not be Nothing");return}
     if (!(isReady)) { // If player is un-ready become ready
-        
         // client Data
         try {
             var data = {
@@ -31,13 +33,6 @@ $("#ready_btn").bind("click", function() {
         $("#ready_btn").text("Ready?")
         socket.emit("clicked_un_ready")
     }
-})
-
-// When the user changes their name
-$("#name_inp").change(function() {
-    if ((this.value).replace(" ") == "") {return}
-    var n = (this.value).charAt(0).toUpperCase() + this.value.slice(1)
-    socket.emit("change_id", n)
 })
 
 // When the user clicks a pick input
@@ -70,16 +65,24 @@ socket.on("start_draft", (data_p) => {
         page++
     }
     else if (page == 1) {
-        // data_p | 0 = Team Order | 1 = non draftable players
+        /* data_p | 0 = Team Order | 1 = non draftable players 
+        | 2 = draft rounds | 3 = picks */ 
         $("#teamPicks").hide()
         $("#ready").hide()
         $("#main").show()
+
+        // Sets the rounds and turns
+        draft_rounds = data_p[2]
+        draftPicks = data_p[3]
+        // Places the clients
         for (var i = 0; i < data_p[0].length; i++) {
+            // Sets the players team
+            if (data_p[0][i]["id"] == uid) {current_team = data_p[0][i]["team"]; pickNum = data_p[0]["pick"]}
             placeClients(data_p[0][i]["team"], data_p[0][i]["pick"], data_p[0][i]["id"])
         }
-        changeTurn(uid)
         placePlayers()
-        // Removes 
+        changeTurn()
+        // Removes the non draftable players
         for (var i=0; i < data_p[1].length-1; i++) {
             $(`div[id='${data_p[1][i]}']`).remove()
         }
@@ -138,3 +141,50 @@ socket.on("connect_error", (err) => {
         $("#ready_btn").text("Ready?")
     }
 });
+
+// When a client sent a trade request
+socket.on("send_trade", (data) => {
+    // 0 = From | 1 = To | 2 = items
+    if (data[1] == current_team) {
+        var elm_id=[]
+        // Shows the menu
+        $("#s_trade_con").show()
+        // Makes the header
+        $("#trade_title").html("") // Resets the header
+        // Team Icon
+        var p = document.createElement("img")
+        p.src = `./teams/${data[0]}.png`
+        p.className = "teamIcon"
+        // Team Name
+        var n = document.createElement("div")
+        n.className = "head_name"
+        n.textContent = data[0]
+        // Appends to the header
+        $("#trade_title").append(p)
+        $("#trade_title").append(n)
+        // Shows the elements
+        for (var i=0; i < data[2].length; i++) {
+            let e = document.createRange().createContextualFragment(data[2][i]);
+            $("#traded_items").append(e)
+        }
+        // Gets each item ID
+        $("#traded_items").children().each(function() {
+            elm_id.push(this.id)
+        })
+
+        // Creates Interactivity with the accept and decline btn
+        // Allows the accept btn to accept the trade
+        $("#accept").click(function() {
+            socket.emit("trade accept", [data[1], data[0], elm_id])
+            // Resets the html of the trade
+            newTrade()
+        })
+        // Allows the decline btn to decline the trade
+        $("#cancel").click(function() {
+            socket.emit("trade_decline", [data[1], data[0]])
+            // Resets the html of the trade
+            newTrade()
+        })
+        $(".select_draft").remove()
+    } 
+})

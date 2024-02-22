@@ -3,9 +3,14 @@
     "not_draftable": [
 
     ],
+    "rounds": 3,
     "pick_old": {
         "active?": true,
         "pre_id": "Season 2",
         "amount": 3
+    },
+    "sendForm": {
+        "active?": true,
+        "url": "https://docs.google.com/forms/u/0/d/e/1FAIpQLScwrWHoPNBFNviqU3vH4iH5DpUijex-iqRvVGeDKs_nuVI6KQ/formResponse"
     }
 }
