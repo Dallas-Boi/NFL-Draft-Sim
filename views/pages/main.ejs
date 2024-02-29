@@ -117,15 +117,15 @@
         <div id="trade_con" class="page trade_c">
             <div class="t_menu">
                 <div id="y_trade_opt" class="navbar">
-                    <button id="opt_picks" class="y_btn selected">Draft Picks</button>
-                    <button id="opt_players" class="y_btn">Players</button>
+                    <button id="y_opt_picks" class="y_btn">Draft Picks</button>
+                    <button id="y_opt_players" class="y_btn">Players</button>
                 </div>
                 <div id="y_trade_items" class="infoBox t_itm"></div>
             </div>
             <div class="t_menu">
                 <div id="o_trade_opt" class="navbar">
-                    <button id="opt_picks" class="o_btn selected">Draft Picks</button>
-                    <button id="opt_players" class="o_btn">Players</button>
+                    <button id="o_opt_picks" class="o_btn selected">Draft Picks</button>
+                    <button id="o_opt_players" class="o_btn">Players</button>
                 </div>
                 <div class="subnav">
                     <select id="playerSel">
@@ -134,19 +134,24 @@
                 </div>
                 <div id="o_trade_items" class="infoBox t_itm"></div>
             </div>
-            <div id="end_trade">
+            <div class="end_trade">
                 <button id="confirm_trade" class="trade_act">Send Trade</button>
                 <button id="cancel_trade" class="trade_act">Canel Trade</button>
             </div>
         </div>
         <div id="s_trade_con" class="page trade_c">
-            <div id="sent_trade" class="t_menu">
-                <div id="trade_title" class="navbar"></div>
-                <div id="traded_items" class="infoBox t_itm"></div>
-                <div id="actions">
-                    <button id="accept" class="trade_act">Accept</button>
-                    <button id="cancel" class="trade_act">Decline</button>
-                </div>
+            <div id="t_sent_trade" class="t_menu">
+                <div id="t_trade_title" class="navbar"></div>
+                <div id="t_traded_items" class="infoBox t_itm"></div>
+            </div>
+            <div id="y_sent_trade" class="t_menu">
+                <div id="y_trade_title" class="navbar"></div>
+                <div id="y_traded_items" class="infoBox t_itm"></div>
+
+            </div>
+            <div class="end_trade">
+                <button id="accept" class="trade_act">Accept Trade</button>
+                <button id="decline" class="trade_act">Decline Trade</button>
             </div>
         </div>
         <script type="text/javascript" src="js/inter.js"></script>

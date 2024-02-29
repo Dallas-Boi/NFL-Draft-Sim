@@ -576,15 +576,27 @@
         }
     },
     "Season 3": {
-        "Dolphins": {
-            "name": "Dallas",
-            "team": "Dolphins",
+        "Lions": {
+            "name": "Dall",
+            "team": "Lions",
+            "pick": "2",
+            "draft": [
+                [
+                    "49ers",
+                    "Trent Williams",
+                    "LT"
+                ]
+            ]
+        },
+        "Cowboys": {
+            "name": "killa2",
+            "team": "Cowboys",
             "pick": "1",
             "draft": [
                 [
-                    "Raiders",
-                    "Davante Adams",
-                    "WR"
+                    "Rams",
+                    "Aaron Donald",
+                    "RE"
                 ]
             ]
         }

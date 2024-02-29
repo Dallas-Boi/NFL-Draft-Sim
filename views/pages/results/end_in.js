@@ -62,7 +62,6 @@ function sortPicks(player) {
         // Adds the player to the team list
         d_tm[this_p[0]].push(this_p)
     }
-    console.log(d_tm)
     // Sets the keys
     var d_tm_k = Object.keys(d_tm)
     // Places the player
@@ -79,9 +78,7 @@ function unsortPicks(player) {
     $(`#${player}`).text("")
     var cur = player_data[player]
     // Places the player
-    console.log(player)
     for (var t=0; t < cur["draft"].length; t++) {
-        console.log(cur["draft"][t][1],"-", cur["draft"][t][2])
         // 0 = Name | 1 = Team | 2 = Position
         $(`#${player}`).append(placePick(cur["draft"][t][0], cur["draft"][t][1], cur["draft"][t][2]))
     }

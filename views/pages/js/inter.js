@@ -39,25 +39,23 @@ function changeTurn() {
 }
 
 // Creates all the players
-function placePlayers() {
-    for (var i=0; i< allPlayers.length; i++) {
-        var amo = allPlayers[i].length
-        var con = document.createElement("div")
-        var abrivi = ""
-        var num = allPlayers[i][amo-4]
-        var ovr = allPlayers[i][amo-1]
-        var pos = allPlayers[i][amo-2]
-        var tm = allPlayers[i][amo-3]
-        // Checks if the player has JR/II
-        if (amo >= 7) {abrivi = ` ${allPlayers[i][amo-5]}`}
+function placePlayer(thisPlayer, justPlayer) {
+    try {
+        var name = thisPlayer["Full Name"]
+        var num = thisPlayer["Jersey Number"]
+        var ovr = thisPlayer["Overall Rating"]
+        var pos = thisPlayer["Position"]
+        var tm = thisPlayer["Team"]
+        
         // Player Container
-        con.id = (`${allPlayers[i][0]} ${allPlayers[i][1]}${abrivi}`).toLowerCase()
+        var con = document.createElement("div")
+        con.id = (name).toLowerCase()
         con.className = `draftBox ${pos}`
         con.value = tm
         // Player Name
         var pname = document.createElement("div")
         pname.className = "player_name"
-        pname.innerHTML = `${allPlayers[i][0]} ${allPlayers[i][1]} ${abrivi}<br>`
+        pname.innerHTML = `${name}<br>`
         // Player Sub Name
         var sub = document.createElement("div")
         sub.className = "subName"
@@ -67,23 +65,28 @@ function placePlayers() {
         var p_ovr = document.createElement("div")
         p_ovr.className = "player_ovr"
         p_ovr.innerHTML = `OVR<br>${ovr}`
-        // Draft Btn
-        let d_btn = document.createElement("button")
-        d_btn.id = `draft_${allPlayers[i][0]} ${allPlayers[i][1]}${abrivi}`
-        d_btn.className = "draft_btn"
-        d_btn.textContent = "+"
-        // When the player clicks the draft button
-        d_btn.addEventListener("click", function() {
-            var n = (this.id).replace("draft_", "") // The player name
-            var t = this.parentElement.value
-            var p = (this.parentElement.className).replace("draftBox ", "")
-            socket.emit("pickDraft", [draftPicks[current_round][curPick] , n, p, t])
-        })
         // Appends everything
         con.appendChild(pname)
         con.appendChild(p_ovr)
-        con.appendChild(d_btn)
-        players.appendChild(con)
+        // If the code just needs the player box
+        if (justPlayer != true) {
+            // Draft Btn
+            let d_btn = document.createElement("button")
+            d_btn.id = `draft_${name}`
+            d_btn.className = "draft_btn"
+            d_btn.textContent = "+"
+            // When the player clicks the draft button
+            d_btn.addEventListener("click", function() {
+                var n = (this.id).replace("draft_", "") // The player name
+                var t = this.parentElement.value
+                var p = (this.parentElement.className).replace("draftBox ", "")
+                socket.emit("pickDraft", [draftPicks[current_round][curPick] , n, p, t])
+            })
+            con.appendChild(d_btn)
+        }
+        return con
+    } catch (err) {
+        console.error(err)
     }
 }
 
@@ -161,25 +164,6 @@ const def_pos = ["LE","RE","DT","LOLB","MLB","ROLB","CB","FS","SS"]
 const spe_pos = ["K", "P"]
 const all_pos = [...off_pos, ...def_pos, ...spe_pos]
 var player_pos = {"QB":[],"HB":[],"FB":[],"WR":[],"TE":[],"LT":[],"LG":[],"C":[],"RG":[],"RT":[],"LE":[],"RE":[],"DT":[],"LOLB":[],"MLB":[],"ROLB":[],"CB":[],"FS":[],"SS":[],"K":[],"P":[]}
-
-// This gets all the players within the players.json data
-var allPlayers = []
-const getData = async() => {
-    var pdata = []
-    const data = await fetch("/players.json")
-        .then((res) => res.json())
-        .then((js) => pdata = js)
-    return data
-}
-// 0 = First Name | 1 = Last Name | 2 ~ JR/II | 2 = Number | 3 = Team | 4 = Position | 5 = OVR
-getData().then((da) => {
-    for (var i=0; i < da.length; i++) {
-        var thisPlay = (da[i]["Player Jersey Num Team Position Overall"].split(" "))
-        allPlayers.push(thisPlay)
-        player_pos[thisPlay[thisPlay.length-2]].push(thisPlay) // Puts the player in their position
-    }
-    //show_players("all")
-})
 
 // This will set the selected team button
 function set_sel_team(btn) {
@@ -295,7 +279,6 @@ function loadTeams() {
         var line = document.createElement("span")
         line.className = "red"
         line.id = `strike_${name}`
-        
         // Makes the Img elm
         var img = document.createElement("img")
         img.className = "teamIcon"

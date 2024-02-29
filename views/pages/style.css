@@ -39,6 +39,9 @@ body {background-color: grey;}
     flex-wrap: nowrap;
     justify-content: center;
     flex: 0 0 auto;
+    background-color: blue;
+    color: white;
+    text-align: center;
 }
 
 .navbar button {
@@ -272,12 +275,6 @@ body {background-color: grey;}
     height:89%;
     width:30em;
 }
-.result .navbar, .t_menu .navbar {
-    background-color: blue;
-    color: white;
-    text-align: center;
-    justify-content: center;
-}
 
 .result .navbar > * {
     width: 5em;
@@ -369,3 +366,12 @@ body {background-color: grey;}
 #trade_items .draftBox .player_ovr {margin-right:2em}
 #trade_items > * .select_draft {margin-right:1em}
 .t_itm .draftBox > * {margin-right: 0;}
+.end_trade {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    width: 55.25em;
+    margin-top: 30em;
+}

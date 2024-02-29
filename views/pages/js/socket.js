@@ -56,10 +56,16 @@ socket.on("input_e", (msg) => {
 
 // When Called this will give the client their ID
 socket.on("return id", (id) => {uid = id})
+// When the server has the player data
+socket.on("Give Ratings", (data) => {
+    var ps = Object.keys(data) // Player Data Keys
+    for (var i=0; i < ps.length; i++) {
+        $("#draft_players").append(placePlayer(data[ps[i]]))
+    }
+})
 
 // When called it will start the draft
 socket.on("start_draft", (data_p) => {
-
     if (page == 0) {
         socket.emit("load_old")
         page++
@@ -80,7 +86,6 @@ socket.on("start_draft", (data_p) => {
             if (data_p[0][i]["id"] == uid) {current_team = data_p[0][i]["team"]; pickNum = data_p[0]["pick"]}
             placeClients(data_p[0][i]["team"], data_p[0][i]["pick"], data_p[0][i]["id"])
         }
-        placePlayers()
         changeTurn()
         // Removes the non draftable players
         for (var i=0; i < data_p[1].length-1; i++) {
@@ -141,50 +146,3 @@ socket.on("connect_error", (err) => {
         $("#ready_btn").text("Ready?")
     }
 });
-
-// When a client sent a trade request
-socket.on("send_trade", (data) => {
-    // 0 = From | 1 = To | 2 = items
-    if (data[1] == current_team) {
-        var elm_id=[]
-        // Shows the menu
-        $("#s_trade_con").show()
-        // Makes the header
-        $("#trade_title").html("") // Resets the header
-        // Team Icon
-        var p = document.createElement("img")
-        p.src = `./teams/${data[0]}.png`
-        p.className = "teamIcon"
-        // Team Name
-        var n = document.createElement("div")
-        n.className = "head_name"
-        n.textContent = data[0]
-        // Appends to the header
-        $("#trade_title").append(p)
-        $("#trade_title").append(n)
-        // Shows the elements
-        for (var i=0; i < data[2].length; i++) {
-            let e = document.createRange().createContextualFragment(data[2][i]);
-            $("#traded_items").append(e)
-        }
-        // Gets each item ID
-        $("#traded_items").children().each(function() {
-            elm_id.push(this.id)
-        })
-
-        // Creates Interactivity with the accept and decline btn
-        // Allows the accept btn to accept the trade
-        $("#accept").click(function() {
-            socket.emit("trade accept", [data[1], data[0], elm_id])
-            // Resets the html of the trade
-            newTrade()
-        })
-        // Allows the decline btn to decline the trade
-        $("#cancel").click(function() {
-            socket.emit("trade_decline", [data[1], data[0]])
-            // Resets the html of the trade
-            newTrade()
-        })
-        $(".select_draft").remove()
-    } 
-})
