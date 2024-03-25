@@ -189,7 +189,7 @@ function pickDraft(team, player) {
     document.getElementById(`${team}_pick`).innerHTML = document.getElementById(low_player).children[0].innerHTML
 
     // This puts the player in the clients "My Picks"
-    document.getElementById(low_player).children[2].remove()
+    document.getElementById(low_player).children[3].remove()
     if (current_team == draftPicks[current_round][curPick] ) {player_picks.appendChild(document.getElementById(low_player))}
     else {document.getElementById(low_player).remove()}
     // Changes the curPick for all players
@@ -322,7 +322,7 @@ spe_p.addEventListener("click", function() {
 $("#searchPlayer").change(function() {
     // If the input for the search box is nothing then it will show all players
     $("#draft_players").children().hide()
-    $("#draft_players").find(`div[id*="${this.value}"]`).show()
+    $("#draft_players").find(`div[id*="${this.value.toLowerCase()}"]`).show()
 })
 
 // This will load all the NFL teams in the correct spot

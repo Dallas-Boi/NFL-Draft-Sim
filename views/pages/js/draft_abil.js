@@ -1,6 +1,6 @@
 // Made Feb 2-9-24
 // Handles everything with the previous draft picking phase
-
+var oldTeam = ""
 // This will load the nav data
 socket.on("loading old draft", (data) => {
     $("#teamPicks").hide()
@@ -14,7 +14,7 @@ socket.on("loading old draft", (data) => {
     var c_name = document.createElement("div")
     c_name.className = "p_name"
     c_name.textContent = data["name"]
-
+    oldTeam = data["team"]
     $("#pre_nav").append(img)
     $("#pre_nav").append(c_name)
     loadOld_players(data["draft"])
@@ -57,7 +57,7 @@ function loadOld_players(all) {
         // When the player clicks the draft button
         d_btn.addEventListener("click", function() {
             var id = this.id.replace("draft_", "")
-            socket.emit("pick old player", id)
+            socket.emit("pick old player", [oldTeam, id])
             this.parentElement.remove() // Removes the player box
         })
         // Appends everything

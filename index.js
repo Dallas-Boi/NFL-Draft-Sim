@@ -96,7 +96,7 @@ var cats = []
 var play = {}
 // Reads the Madden 23 Ratings CSV
 function makeData() {
-    fs.createReadStream("./m23_ratings.csv")
+    fs.createReadStream("./m24_ratings.csv")
         .pipe(parse({ delimiter: ",", from_line: 1 }))
         .on("data", function (row) {
             if (row[0] == "Team") {cats = row;return} // Makes the cats
@@ -110,7 +110,6 @@ function makeData() {
                     play[a[p][2]][cats[i]] = a[p][i]
                 }
             }
-            
         })
         .on("error", function (error) {
             console.log(error.message);
@@ -162,7 +161,6 @@ function check_ready() {
                 draft_picks[i+1][p] = order[p]["team"]
             }
         }
-        console.log(draft_picks)
 
         fs.writeFile("drafts.json", JSON.stringify(d, null, 4),err => {
             // Checking for errors 
@@ -314,7 +312,6 @@ io.on("connection", (socket) => {
             for (var ch=0; ch < old_k.length; ch++) { 
                 // Checks if the player was in last draft
                 if (draft[con_set["pick_old"]["pre_id"]][old_k[ch]]["name"] == con[socket.id]["name"]) {
-                    console.log(draft[con_set["pick_old"]["pre_id"]][old_k[ch]]["draft"])
                     socket.emit("loading old draft", draft[con_set["pick_old"]["pre_id"]][old_k[ch]])
                     return
                 }
@@ -327,10 +324,11 @@ io.on("connection", (socket) => {
 
     // When a client picks a old player
     socket.on("pick old player", (data) => {
+        // Data 0= Old Team | 1 = Position
         var con_set = require("./draft_settings.json")
         var draft = require("./drafts.json")
         // Adds the player to the old pick
-        var player_data = draft[con_set["pick_old"]["pre_id"]][socket.id]["draft"][parseInt(data)]
+        var player_data = draft[con_set["pick_old"]["pre_id"]][data[0]]["draft"][parseInt(data[1])]
         // Writes the data to the draft_settings
         con[socket.id]["old_picks"].push(player_data)
         old_play.push(player_data[1])

@@ -1,6 +1,6 @@
 {
     "Season 1": {
-        "Chris": {
+        "Chiefs": {
             "name": "Chris",
             "team": "Chiefs",
             "pick": "1",
@@ -92,7 +92,7 @@
                 ]
             ]
         },
-        "Zion": {
+        "49ers": {
             "name": "Zion",
             "team": "49ers",
             "pick": "2",
@@ -184,7 +184,7 @@
                 ]
             ]
         },
-        "Dallas": {
+        "Browns": {
             "name": "Dallas",
             "team": "Browns",
             "pick": "3",
@@ -278,7 +278,7 @@
         }
     },
     "Season 2": {
-        "Chris": {
+        "Bills": {
             "name": "Chris",
             "team": "Bills",
             "pick": "3",
@@ -375,7 +375,7 @@
                 ]
             ]
         },
-        "Zion": {
+        "Dolphins": {
             "name": "Zion",
             "team": "Dolphins",
             "pick": "1",
@@ -477,7 +477,7 @@
                 ]
             ]
         },
-        "Dallas": {
+        "Bengals": {
             "name": "Dallas",
             "team": "Bengals",
             "pick": "2",
@@ -576,11 +576,27 @@
         }
     },
     "Season 3": {
-        "Jets": {
-            "name": "dalla",
-            "team": "Jets",
+        "Patriots": {
+            "name": "Dallas",
+            "team": "Patriots",
             "pick": "1",
-            "draft": []
+            "draft": [
+                [
+                    "Browns",
+                    "Myles Garrett",
+                    "RE"
+                ],
+                [
+                    "Packers",
+                    "Aaron Rodgers",
+                    "QB"
+                ],
+                [
+                    "Rams",
+                    "Jalen Ramsey",
+                    "CB"
+                ]
+            ]
         }
     }
 }

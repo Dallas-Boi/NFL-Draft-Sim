@@ -89,7 +89,7 @@ socket.on("start_draft", (data_p) => {
         changeTurn()
         // Removes the non draftable players
         for (var i=0; i < data_p[1].length-1; i++) {
-            $(`div[id='${data_p[1][i]}']`).remove()
+            $(`div[id='${data_p[1][i].toLowerCase()}']`).remove()
         }
     }
 })
