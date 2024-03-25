@@ -83,8 +83,9 @@ app.post('/trade', (req, res) => {
     res.send(reData)
 })
 
-app.get("/answers", (req, res) => {
-    console.log(req.body.t)
+// When Called Returns the give Players stats
+app.post("/getStats", (req, res) => {
+    res.send(play[req.body.n])
 })
 
 // Capitalize the string given
@@ -95,7 +96,7 @@ var cats = []
 var play = {}
 // Reads the Madden 23 Ratings CSV
 function makeData() {
-    fs.createReadStream("./m24_ratings.csv")
+    fs.createReadStream("./m23_ratings.csv")
         .pipe(parse({ delimiter: ",", from_line: 1 }))
         .on("data", function (row) {
             if (row[0] == "Team") {cats = row;return} // Makes the cats
@@ -329,9 +330,7 @@ io.on("connection", (socket) => {
         var con_set = require("./draft_settings.json")
         var draft = require("./drafts.json")
         // Adds the player to the old pick
-        console.log(draft[con_set["pick_old"]["pre_id"]][con[socket.id]["name"]])
         var player_data = draft[con_set["pick_old"]["pre_id"]][socket.id]["draft"][parseInt(data)]
-        
         // Writes the data to the draft_settings
         con[socket.id]["old_picks"].push(player_data)
         old_play.push(player_data[1])
