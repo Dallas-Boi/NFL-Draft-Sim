@@ -95,7 +95,7 @@ var cats = []
 var play = {}
 // Reads the Madden 23 Ratings CSV
 function makeData() {
-    fs.createReadStream("./m23_ratings.csv")
+    fs.createReadStream("./m24_ratings.csv")
         .pipe(parse({ delimiter: ",", from_line: 1 }))
         .on("data", function (row) {
             if (row[0] == "Team") {cats = row;return} // Makes the cats
