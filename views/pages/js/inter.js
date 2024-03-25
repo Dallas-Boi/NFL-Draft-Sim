@@ -38,6 +38,54 @@ function changeTurn() {
     document.getElementById("cur_r").textContent = `${current_round}/${draft_rounds}`
 }
 
+// When called it will setup the player stats page
+async function setPlayerStats(name) {
+    var pdata = await fetch(`/getStats`, {
+        method: "post",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    
+        //make sure to serialize your JSON body
+        body: JSON.stringify({
+            n: name
+        })
+    })
+        .then(response => response.json())
+        .then (res => {
+            $("#infoStats").html("") // Resets all the stats info
+            $("#infoTitle").html(`<b>${name}</b> Stats`)// Sets the title
+            let keys = Object.keys(res)
+            console.log(keys)
+            console.log(res)
+            let show = ["Speed", "Throw Accuracy Short", "Throw Accuracy Middle", "Throw Accuracy Deep", "Acceleration", "Agility", "Throw Power", "Throw Under Pressure", "Throw On The Run", "Carrying", "Strength", "Ball Carrier Vision", "Awareness", "Play Action", "Break Tackle", "Trucking", "Spin Move", "Juke Move", "Stiff Arm"]
+            for (let stat of keys) {
+                // If stat is not included in show then don't show t
+                if (!(show.includes(stat))) {continue}
+                // Container
+                let con = document.createElement("div")
+                con.className = "stat_con"
+                con.innerHTML = `<b>${stat}</b>`
+                // Stat num
+                let sub = document.createElement("div")
+                sub.className = "subStat"
+                sub.textContent = res[stat]
+                let color = "red"
+                // Checks the value to check what the color should be
+                if (res[stat] >= 85) {color="green"}
+                else if (res[stat] >= 75) {color="lime"}
+                else if (res[stat] >= 60) {color="orange"}
+                sub.style.color = color
+                // Adds the elements together
+                con.appendChild(sub)
+                $("#infoStats").append(con)
+            }
+        })
+}
+
+// When clicked it will hide the stats page
+$("#back_to_draft").click(function() {$("#info").hide()})
+
 // Creates all the players
 function placePlayer(thisPlayer, justPlayer) {
     try {
@@ -70,6 +118,18 @@ function placePlayer(thisPlayer, justPlayer) {
         con.appendChild(p_ovr)
         // If the code just needs the player box
         if (justPlayer != true) {
+            // Player Stats Btn
+            let s_btn = document.createElement("button")
+            s_btn.id =  `stat_${name}`
+            s_btn.className = `stat_btn`
+            s_btn.textContent = "📃"
+            // When the player clicks the stats btn
+            s_btn.addEventListener("click", function() {
+                $("#info").show()
+                let n = (this.id).replace("stat_", "") // The player name
+                setPlayerStats(n)
+            })
+            con.appendChild(s_btn)
             // Draft Btn
             let d_btn = document.createElement("button")
             d_btn.id = `draft_${name}`

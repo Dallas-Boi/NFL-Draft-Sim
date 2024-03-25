@@ -576,29 +576,11 @@
         }
     },
     "Season 3": {
-        "Lions": {
-            "name": "Dall",
-            "team": "Lions",
-            "pick": "2",
-            "draft": [
-                [
-                    "49ers",
-                    "Trent Williams",
-                    "LT"
-                ]
-            ]
-        },
-        "Cowboys": {
-            "name": "killa2",
-            "team": "Cowboys",
+        "Jets": {
+            "name": "dalla",
+            "team": "Jets",
             "pick": "1",
-            "draft": [
-                [
-                    "Rams",
-                    "Aaron Donald",
-                    "RE"
-                ]
-            ]
+            "draft": []
         }
     }
 }

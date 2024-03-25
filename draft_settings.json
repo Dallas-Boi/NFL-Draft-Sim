@@ -10,7 +10,7 @@
         "amount": 3
     },
     "sendForm": {
-        "active?": true,
+        "active?": false,
         "url": "https://docs.google.com/forms/u/0/d/e/1FAIpQLScwrWHoPNBFNviqU3vH4iH5DpUijex-iqRvVGeDKs_nuVI6KQ/formResponse"
     }
 }
