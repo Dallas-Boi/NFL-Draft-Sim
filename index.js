@@ -11,6 +11,10 @@ const bodyParser = require('body-parser');
 const https = require("https")
 const http = require('http');
 
+// This will enable the gAPI Scripts ( If Available )
+var gapis
+try {gapis = require("./gAPI/gSheets")} catch(e) {console.log("API not Enabled")}
+
 // HTTPS creds
 /*const options = {
     key: fs.readFileSync('ssl/server.key', 'utf8'),
@@ -275,8 +279,7 @@ io.on("connection", (socket) => {
      
             // Success 
             console.log("Done writing");
-        });
-        
+        })
     })
 
     // Sends the clients a message when a client clicks a team icon

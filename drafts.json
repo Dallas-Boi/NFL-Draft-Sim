@@ -284,64 +284,9 @@
             "pick": "3",
             "draft": [
                 [
-                    "Chiefs",
-                    "Patrick Mahomes",
-                    "QB"
-                ],
-                [
-                    "Dolphins",
-                    "Tyreek Hill",
-                    "WR"
-                ],
-                [
-                    "Packers",
-                    "Jaire Alexander",
-                    "CB"
-                ],
-                [
-                    "Chiefs",
-                    "Travis Kelce",
-                    "TE"
-                ],
-                [
-                    "49ers",
-                    "Fred Warner",
-                    "MLB"
-                ],
-                [
-                    "Eagles",
-                    "Darius Slay Jr",
-                    "CB"
-                ],
-                [
                     "Cowboys",
                     "Micah Parsons",
                     "ROLB"
-                ],
-                [
-                    "Chiefs",
-                    "Chris Jones",
-                    "DT"
-                ],
-                [
-                    "Bills",
-                    "Micah Hyde",
-                    "FS"
-                ],
-                [
-                    "Eagles",
-                    "Jason Kelce",
-                    "C"
-                ],
-                [
-                    "Cowboys",
-                    "DeMarcus Lawrence",
-                    "LE"
-                ],
-                [
-                    "Commanders",
-                    "Jonathan Allen",
-                    "DT"
                 ],
                 [
                     "Chargers",
@@ -349,9 +294,19 @@
                     "WR"
                 ],
                 [
-                    "Bills",
-                    "Von Miller",
-                    "RE"
+                    "Dolphins",
+                    "Tyreek Hill",
+                    "WR"
+                ],
+                [
+                    "Chiefs",
+                    "Chris Jones",
+                    "DT"
+                ],
+                [
+                    "Commanders",
+                    "Jonathan Allen",
+                    "DT"
                 ],
                 [
                     "Buccaneers",
@@ -359,9 +314,44 @@
                     "DT"
                 ],
                 [
-                    "Browns",
-                    "Nick Chubb",
+                    "Cardinals",
+                    "Budda Baker",
+                    "SS"
+                ],
+                [
+                    "Vikings",
+                    "Dalvin Cook",
                     "HB"
+                ],
+                [
+                    "Packers",
+                    "Jaire Alexander",
+                    "CB"
+                ],
+                [
+                    "Bills",
+                    "Von Miller",
+                    "RE"
+                ],
+                [
+                    "49ers",
+                    "Fred Warner",
+                    "MLB"
+                ],
+                [
+                    "Panthers",
+                    "Christian McCaffrey",
+                    "HB"
+                ],
+                [
+                    "Cowboys",
+                    "DeMarcus Lawrence",
+                    "LE"
+                ],
+                [
+                    "Chiefs",
+                    "Patrick Mahomes",
+                    "QB"
                 ],
                 [
                     "Cowboys",
@@ -369,9 +359,14 @@
                     "RG"
                 ],
                 [
-                    "Cardinals",
-                    "Budda Baker",
-                    "SS"
+                    "Chiefs",
+                    "Travis Kelce",
+                    "TE"
+                ],
+                [
+                    "Bills",
+                    "Micah Hyde",
+                    "FS"
                 ]
             ]
         },
@@ -381,34 +376,19 @@
             "pick": "1",
             "draft": [
                 [
-                    "Buccaneers",
-                    "Tom Brady",
-                    "QB"
-                ],
-                [
-                    "Panthers",
-                    "Christian McCaffrey",
-                    "HB"
-                ],
-                [
-                    "Rams",
-                    "Cooper Kupp",
-                    "WR"
-                ],
-                [
-                    "Rams",
-                    "Aaron Donald",
-                    "RE"
-                ],
-                [
-                    "Ravens",
-                    "Marlon Humphrey",
+                    "Eagles",
+                    "Darius Slay Jr",
                     "CB"
                 ],
                 [
-                    "Raiders",
-                    "Davante Adams",
-                    "WR"
+                    "Steelers",
+                    "Cameron Heyward",
+                    "RE"
+                ],
+                [
+                    "49ers",
+                    "Nick Bosa",
+                    "RE"
                 ],
                 [
                     "Steelers",
@@ -417,8 +397,8 @@
                 ],
                 [
                     "49ers",
-                    "Nick Bosa",
-                    "RE"
+                    "Trent Williams",
+                    "LT"
                 ],
                 [
                     "49ers",
@@ -426,19 +406,9 @@
                     "TE"
                 ],
                 [
-                    "Bills",
-                    "Tre'Davious White",
+                    "Colts",
+                    "Stephon Gilmore",
                     "CB"
-                ],
-                [
-                    "Vikings",
-                    "Justin Jefferson",
-                    "WR"
-                ],
-                [
-                    "49ers",
-                    "Trent Williams",
-                    "LT"
                 ],
                 [
                     "Saints",
@@ -446,9 +416,49 @@
                     "MLB"
                 ],
                 [
+                    "Bills",
+                    "Tre'Davious White",
+                    "CB"
+                ],
+                [
                     "Chargers",
                     "Derwin James Jr",
                     "SS"
+                ],
+                [
+                    "Colts",
+                    "Jonathan Taylor",
+                    "HB"
+                ],
+                [
+                    "Vikings",
+                    "Justin Jefferson",
+                    "WR"
+                ],
+                [
+                    "Rams",
+                    "Bobby Wagner",
+                    "MLB"
+                ],
+                [
+                    "Browns",
+                    "Nick Chubb",
+                    "HB"
+                ],
+                [
+                    "Ravens",
+                    "Marlon Humphrey",
+                    "CB"
+                ],
+                [
+                    "Rams",
+                    "Cooper Kupp",
+                    "WR"
+                ],
+                [
+                    "Raiders",
+                    "Davante Adams",
+                    "WR"
                 ],
                 [
                     "Ravens",
@@ -457,23 +467,13 @@
                 ],
                 [
                     "Rams",
-                    "Bobby Wagner",
-                    "MLB"
-                ],
-                [
-                    "Steelers",
-                    "Cameron Heyward",
+                    "Aaron Donald",
                     "RE"
                 ],
                 [
-                    "Colts",
-                    "Jonathan Taylor",
-                    "HB"
-                ],
-                [
-                    "Colts",
-                    "Stephon Gilmore",
-                    "CB"
+                    "Buccaneers",
+                    "Tom Brady",
+                    "QB"
                 ]
             ]
         },
@@ -483,24 +483,9 @@
             "pick": "2",
             "draft": [
                 [
-                    "Browns",
-                    "Myles Garrett",
-                    "RE"
-                ],
-                [
-                    "Packers",
-                    "Aaron Rodgers",
-                    "QB"
-                ],
-                [
-                    "Rams",
-                    "Jalen Ramsey",
-                    "CB"
-                ],
-                [
-                    "Buccaneers",
-                    "Mike Evans",
-                    "WR"
+                    "Eagles",
+                    "Jason Kelce",
+                    "C"
                 ],
                 [
                     "Buccaneers",
@@ -508,19 +493,14 @@
                     "MLB"
                 ],
                 [
-                    "Cardinals",
-                    "DeAndre Hopkins",
-                    "WR"
-                ],
-                [
                     "Saints",
                     "Tyrann Mathieu",
                     "SS"
                 ],
                 [
-                    "Chargers",
-                    "Joey Bosa",
-                    "LOLB"
+                    "Buccaneers",
+                    "Mike Evans",
+                    "WR"
                 ],
                 [
                     "Bills",
@@ -528,14 +508,9 @@
                     "WR"
                 ],
                 [
-                    "Titans",
-                    "Derrick Henry",
-                    "HB"
-                ],
-                [
-                    "Ravens",
-                    "Mark Andrews",
-                    "TE"
+                    "Browns",
+                    "Denzel Ward",
+                    "CB"
                 ],
                 [
                     "Chargers",
@@ -543,14 +518,19 @@
                     "ROLB"
                 ],
                 [
-                    "Browns",
-                    "Denzel Ward",
+                    "49ers",
+                    "Kyle Juszczyk",
+                    "FB"
+                ],
+                [
+                    "Rams",
+                    "Jalen Ramsey",
                     "CB"
                 ],
                 [
-                    "Titans",
-                    "Kevin Byard",
-                    "FS"
+                    "Browns",
+                    "Myles Garrett",
+                    "RE"
                 ],
                 [
                     "Saints",
@@ -558,9 +538,29 @@
                     "CB"
                 ],
                 [
-                    "49ers",
-                    "Kyle Juszczyk",
-                    "FB"
+                    "Packers",
+                    "Aaron Rodgers",
+                    "QB"
+                ],
+                [
+                    "Ravens",
+                    "Mark Andrews",
+                    "TE"
+                ],
+                [
+                    "Titans",
+                    "Derrick Henry",
+                    "HB"
+                ],
+                [
+                    "Chargers",
+                    "Joey Bosa",
+                    "LOLB"
+                ],
+                [
+                    "Titans",
+                    "Kevin Byard",
+                    "FS"
                 ],
                 [
                     "Raiders",
@@ -568,35 +568,18 @@
                     "TE"
                 ],
                 [
-                    "Vikings",
-                    "Dalvin Cook",
-                    "HB"
+                    "Cardinals",
+                    "DeAndre Hopkins",
+                    "WR"
                 ]
             ]
         }
     },
     "Season 3": {
-        "Patriots": {
+        "Jets": {
             "name": "Dallas",
-            "team": "Patriots",
-            "pick": "1",
-            "draft": [
-                [
-                    "Browns",
-                    "Myles Garrett",
-                    "RE"
-                ],
-                [
-                    "Packers",
-                    "Aaron Rodgers",
-                    "QB"
-                ],
-                [
-                    "Rams",
-                    "Jalen Ramsey",
-                    "CB"
-                ]
-            ]
+            "team": "Jets",
+            "pick": "1"
         }
     }
 }
