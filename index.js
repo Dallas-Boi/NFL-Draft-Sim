@@ -12,8 +12,8 @@ const https = require("https")
 const http = require('http');
 
 // This will enable the gAPI Scripts ( If Available )
-var gapis
-try {gapis = require("./gAPI/gSheets")} catch(e) {console.log("API not Enabled")}
+// Comment the line below to disable google sheet API
+const { getPicks, addPicks } = require("./gAPI/gSheets")
 
 // HTTPS creds
 /*const options = {
@@ -134,7 +134,8 @@ function getTaken(dic, loc) {
 // All variables for the Socket IO connects
 var con = {}
 var ready = 0
-var s = require("./draft_settings.json")
+var s = require("./draft_settings.json");
+const { getAuthToken } = require("./gAPI/gSheets");
 var old_play = s["not_draftable"]
 var draft_picks = {}
 
@@ -177,40 +178,17 @@ function check_ready() {
     }
 }
 
-// This will send a google sheet response when called
-async function sendResponse(cid, pn, t, n, p) {
-    if (s["sendForm"]["active?"] == false) {return} // Cancels the request if sendForm is inactive
-    // Tries to send a post Request to the form
-    try {
-        const formData = {
-            "entry.578240665": cid,
-            "entry.1910384922": pn,
-            "entry.1357579809": t,
-            "entry.788684619": n,
-            "entry.1668899752": p
-        }
-        // Sends the request
-        const response = await axios.post(s["sendForm"]["url"], formData, {
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            }
-          });
- 
-        console.log('Form submitted successfully');
-        console.log('Response:', response.status);
-      } catch (error) {
-        console.error('Error submitting form:', error.code);
-      }
-}
 
 // This will send all the responses to the sheet ( Once the Draft is Over )
 function endDraft(cid) {
+    if (s["sendForm"]["active?"] == false) {return} // Cancels the request if sendForm is inactive
     var d = require("./drafts.json")
     var per = Object.keys(d[cid])
-    for (var z = 0; z < per.length; z++) {
+   
+    for (var z = 0; z < per.length; z++) {  // Every Player
         var tis = d[cid][per[z]]
-        for (var ll=0; ll < tis["draft"].length; ll++) {
-            sendResponse(cid, tis["name"], tis["draft"][ll][0], tis["draft"][ll][1], tis["draft"][ll][2])
+        for (var ll=0; ll < tis["draft"].length; ll++) { // Every Players Draft
+            addPicks([id, tis["name"], tis["draft"][ll][0], tis["draft"][ll][1], tis["draft"][ll][2]])
         }
     }
 }

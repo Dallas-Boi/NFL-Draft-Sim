@@ -576,10 +576,11 @@
         }
     },
     "Season 3": {
-        "Jets": {
-            "name": "Dallas",
-            "team": "Jets",
-            "pick": "1"
+        "Patriots": {
+            "name": "hee",
+            "team": "Patriots",
+            "pick": "1",
+            "draft": []
         }
     }
 }
