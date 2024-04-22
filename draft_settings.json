@@ -3,7 +3,7 @@
     "not_draftable": [],
     "rounds": 15,
     "pick_old": {
-        "active?": false,
+        "active?": true,
         "pre_id": "Season 3",
         "amount": 3
     },

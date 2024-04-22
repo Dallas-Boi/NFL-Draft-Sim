@@ -298,6 +298,7 @@ all_p.addEventListener("click", function() {
     inp.id = "searchPlayer"
     inp.placeholder = "Player's Name"
     subNav.appendChild(inp)
+    allowSearch()
 })
 
 off_p.addEventListener("click", function() {
@@ -318,12 +319,18 @@ spe_p.addEventListener("click", function() {
     showElms(spe_pos)
 })
 
-// When the client uses the search box for their player
-$("#searchPlayer").change(function() {
-    // If the input for the search box is nothing then it will show all players
-    $("#draft_players").children().hide()
-    $("#draft_players").find(`div[id*="${this.value.toLowerCase()}"]`).show()
-})
+// This will enable the search bar
+// This is only hear to fix the issue when changing tab it will break the search
+function allowSearch() {
+    // When the client uses the search box for their player
+    $("#searchPlayer").change(function() {
+        // If the input for the search box is nothing then it will show all players
+        $("#draft_players").children().hide()
+        $("#draft_players").find(`div[id*="${this.value.toLowerCase()}"]`).show()
+    })
+}
+
+allowSearch()
 
 // This will load all the NFL teams in the correct spot
 function loadTeams() {

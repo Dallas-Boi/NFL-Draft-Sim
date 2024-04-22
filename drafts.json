@@ -822,5 +822,29 @@
                 ]
             ]
         }
+    },
+    "Season 4": {
+        "Dolphins": {
+            "name": "Dallas",
+            "team": "Dolphins",
+            "pick": "1",
+            "draft": [
+                [
+                    "Bills",
+                    "Josh Allen",
+                    "QB"
+                ],
+                [
+                    "Dolphins",
+                    "Tyreek Hill",
+                    "WR"
+                ],
+                [
+                    "Cardinals",
+                    "Marquise Brown",
+                    "WR"
+                ]
+            ]
+        }
     }
 }

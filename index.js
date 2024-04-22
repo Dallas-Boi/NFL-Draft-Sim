@@ -186,7 +186,6 @@ function sleep(ms) {
     });
 }
 
-
 // This will send all the responses to the sheet ( Once the Draft is Over )
 async function endDraft() {
     if (s["sendForm"]["active?"] == false) {return} // Cancels the request if sendForm is inactive
