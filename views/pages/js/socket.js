@@ -60,6 +60,7 @@ socket.on("return id", (id) => {uid = id})
 socket.on("Give Ratings", (data) => {
     var ps = Object.keys(data) // Player Data Keys
     for (var i=0; i < ps.length; i++) {
+        console.log(placePlayer(data[ps[i]]))
         $("#draft_players").append(placePlayer(data[ps[i]]))
     }
 })

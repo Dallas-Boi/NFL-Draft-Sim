@@ -1,6 +1,7 @@
 // Made 3-26-24
 // Made to handle data gathering for the madden sheet
 
+
 // Global Variables
 const { google } = require('googleapis')
 const sheets = google.sheets('v4');
@@ -46,6 +47,7 @@ async function addSpreadSheetValues({spreadsheetId, auth, sheetName, data}) {
             ]
         }
     });
+    
     return res
 }
 
@@ -63,12 +65,13 @@ async function updateSpreadSheetValues({spreadsheetId, auth, sheetName, data}) {
             ]
         }
     });
-    console.log(data)
+    
     return res
 }
 
 // Adds to the Picks
 async function addPicks(data) {
+    
     try {
         const auth = await getAuthToken();
         const response = await addSpreadSheetValues({
@@ -77,7 +80,6 @@ async function addPicks(data) {
             auth,
             data: data
         })
-
         //console.log('output for add', JSON.stringify(response.data, null, 2));
     } catch(error) {
         console.log(error.message, error.stack);

@@ -576,11 +576,251 @@
         }
     },
     "Season 3": {
-        "Patriots": {
-            "name": "hee",
-            "team": "Patriots",
+        "Ravens": {
+            "name": "Zion",
+            "team": "Ravens",
+            "pick": "2",
+            "draft": [
+                [
+                    "Ravens",
+                    "Lamar Jackson",
+                    "QB"
+                ],
+                [
+                    "Vikings",
+                    "Justin Jefferson",
+                    "WR"
+                ],
+                [
+                    "Chiefs",
+                    "Travis Kelce",
+                    "TE"
+                ],
+                [
+                    "Cowboys",
+                    "Micah Parsons",
+                    "RE"
+                ],
+                [
+                    "Browns",
+                    "Nick Chubb",
+                    "HB"
+                ],
+                [
+                    "Browns",
+                    "Myles Garrett",
+                    "RE"
+                ],
+                [
+                    "Packers",
+                    "Jaire Alexander",
+                    "CB"
+                ],
+                [
+                    "Raiders",
+                    "Davante Adams",
+                    "WR"
+                ],
+                [
+                    "49ers",
+                    "Nick Bosa",
+                    "RE"
+                ],
+                [
+                    "Cowboys",
+                    "Zack Martin",
+                    "RG"
+                ],
+                [
+                    "49ers",
+                    "Trent Williams",
+                    "LT"
+                ],
+                [
+                    "Steelers",
+                    "Minkah Fitzpatrick",
+                    "FS"
+                ],
+                [
+                    "Ravens",
+                    "Marlon Humphrey",
+                    "CB"
+                ],
+                [
+                    "Rams",
+                    "Cooper Kupp",
+                    "WR"
+                ],
+                [
+                    "Bills",
+                    "Von Miller",
+                    "RE"
+                ]
+            ]
+        },
+        "Chiefs": {
+            "name": "Dallas",
+            "team": "Chiefs",
             "pick": "1",
-            "draft": []
+            "draft": [
+                [
+                    "Bills",
+                    "Josh Allen",
+                    "QB"
+                ],
+                [
+                    "Dolphins",
+                    "Tyreek Hill",
+                    "WR"
+                ],
+                [
+                    "Cardinals",
+                    "Marquise Brown",
+                    "WR"
+                ],
+                [
+                    "49ers",
+                    "George Kittle",
+                    "TE"
+                ],
+                [
+                    "49ers",
+                    "Christian McCaffrey",
+                    "HB"
+                ],
+                [
+                    "Rams",
+                    "Aaron Donald",
+                    "RE"
+                ],
+                [
+                    "Chiefs",
+                    "Chris Jones",
+                    "DT"
+                ],
+                [
+                    "Broncos",
+                    "Patrick Surtain II",
+                    "CB"
+                ],
+                [
+                    "Eagles",
+                    "Jason Kelce",
+                    "C"
+                ],
+                [
+                    "Bills",
+                    "Stefon Diggs",
+                    "WR"
+                ],
+                [
+                    "Steelers",
+                    "T.J. Watt",
+                    "LOLB"
+                ],
+                [
+                    "Texans",
+                    "Laremy Tunsil",
+                    "LT"
+                ],
+                [
+                    "Cardinals",
+                    "Budda Baker",
+                    "SS"
+                ],
+                [
+                    "Ravens",
+                    "Roquan Smith",
+                    "MLB"
+                ],
+                [
+                    "Lions",
+                    "Jameson Williams",
+                    "WR"
+                ]
+            ]
+        },
+        "Seahawks": {
+            "name": "Chris ",
+            "team": "Seahawks",
+            "pick": "3",
+            "draft": [
+                [
+                    "Chiefs",
+                    "Patrick Mahomes",
+                    "QB"
+                ],
+                [
+                    "Cowboys",
+                    "CeeDee Lamb",
+                    "WR"
+                ],
+                [
+                    "Eagles",
+                    "A.J. Brown",
+                    "WR"
+                ],
+                [
+                    "49ers",
+                    "Fred Warner",
+                    "MLB"
+                ],
+                [
+                    "Giants",
+                    "Saquon Barkley",
+                    "HB"
+                ],
+                [
+                    "Dolphins",
+                    "Jalen Ramsey",
+                    "CB"
+                ],
+                [
+                    "Jets",
+                    "Sauce Gardner",
+                    "CB"
+                ],
+                [
+                    "Giants",
+                    "Dexter Lawrence II",
+                    "DT"
+                ],
+                [
+                    "Chargers",
+                    "Derwin James Jr",
+                    "SS"
+                ],
+                [
+                    "Jaguars",
+                    "Josh Allen",
+                    "LOLB"
+                ],
+                [
+                    "Falcons",
+                    "Jessie Bates III",
+                    "FS"
+                ],
+                [
+                    "Lions",
+                    "Frank Ragnow",
+                    "C"
+                ],
+                [
+                    "Falcons",
+                    "Chris Lindstrom",
+                    "RG"
+                ],
+                [
+                    "Ravens",
+                    "Mark Andrews",
+                    "TE"
+                ],
+                [
+                    "Chiefs",
+                    "Joe Thuney",
+                    "LG"
+                ]
+            ]
         }
     }
 }

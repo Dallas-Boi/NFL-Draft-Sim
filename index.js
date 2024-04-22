@@ -98,7 +98,7 @@ const capitalize = (str, lower = false) =>(lower ? str.toLowerCase() : str).repl
 var a = [] // Players
 var cats = []
 var play = {}
-// Reads the Madden 23 Ratings CSV
+// Reads the Madden Ratings CSV
 function makeData() {
     fs.createReadStream("./m24_ratings.csv")
         .pipe(parse({ delimiter: ",", from_line: 1 }))
@@ -109,6 +109,7 @@ function makeData() {
         // Once the data has been made
         .on("end", function () {
             for (var p = 0; p < a.length; p++) {
+                if (play[a[p][2]]) {continue}
                 play[a[p][2]] = {}
                 for (var i=0;i < cats.length; i++) {
                     play[a[p][2]][cats[i]] = a[p][i]
@@ -178,17 +179,24 @@ function check_ready() {
     }
 }
 
+// Pauses the code
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
+
 
 // This will send all the responses to the sheet ( Once the Draft is Over )
-function endDraft(cid) {
+async function endDraft() {
     if (s["sendForm"]["active?"] == false) {return} // Cancels the request if sendForm is inactive
     var d = require("./drafts.json")
-    var per = Object.keys(d[cid])
+    var per = Object.keys(d[id])
    
     for (var z = 0; z < per.length; z++) {  // Every Player
-        var tis = d[cid][per[z]]
+        var tis = d[id][per[z]]
         for (var ll=0; ll < tis["draft"].length; ll++) { // Every Players Draft
-            addPicks([id, tis["name"], tis["draft"][ll][0], tis["draft"][ll][1], tis["draft"][ll][2]])
+            await addPicks([id, tis["name"], tis["draft"][ll][0], tis["draft"][ll][1], tis["draft"][ll][2]])
         }
     }
 }

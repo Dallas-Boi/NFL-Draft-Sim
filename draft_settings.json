@@ -1,10 +1,10 @@
 {
-    "id": "Season 3",
+    "id": "Season 4",
     "not_draftable": [],
-    "rounds": 3,
+    "rounds": 15,
     "pick_old": {
         "active?": false,
-        "pre_id": "Season 2",
+        "pre_id": "Season 3",
         "amount": 3
     },
     "sendForm": {
